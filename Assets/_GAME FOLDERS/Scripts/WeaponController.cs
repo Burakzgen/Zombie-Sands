@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class WeaponController : MonoBehaviour
@@ -7,17 +6,20 @@ public class WeaponController : MonoBehaviour
     Camera _cam;
     [Header("WEAPON SETTINGS")]
     private int _currentWeaponIndex;
+
     private float _fireFreq;
     [SerializeField] private Weapon[] weapons;
     [SerializeField] private GameObject[] weaponObjects;
     public bool isFire;
-
+    [SerializeField] private TextMeshProUGUI _totalBulletsText;
+    [SerializeField] private TextMeshProUGUI _remainingBulletsText;
     [Header("PARTICAL SYSTEM")]
     [SerializeField] private ParticleSystem _bloodEffect;
 
     private void Start()
     {
         _currentWeaponIndex = 0;
+        ChangeText(0);
         _cam = Camera.main;
 
         for (int i = 0; i < weapons.Length; i++)
@@ -38,21 +40,33 @@ public class WeaponController : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(KeyCode.Mouse0) && isFire && Time.time > _fireFreq)
+        if (Input.GetKey(KeyCode.Mouse0))
         {
-            Fire();
-            _fireFreq = Time.time + weapons[_currentWeaponIndex].reloadTime;
+            if (isFire && Time.time > _fireFreq && weapons[_currentWeaponIndex].remainingBullet != 0)
+            {
+                Fire();
+                _fireFreq = Time.time + weapons[_currentWeaponIndex].reloadTime;
+            }
+            else
+            {
+                //TODO: Mermi bitis sesi eklenecek.
+            }
         }
     }
     private void Fire()
     {
+        //TODO: Fire sesi eklenebilir.
+        //TODO: Effectide (mermi cikis-Muzzle effect) eklenebilir.
+
         weaponObjects[_currentWeaponIndex].GetComponent<Animator>().Play(weapons[_currentWeaponIndex].fireAnimation);
+
+        weapons[_currentWeaponIndex].remainingBullet--;
+        _remainingBulletsText.text = weapons[_currentWeaponIndex].remainingBullet.ToString();
 
         RaycastHit hit;
         if (Physics.Raycast(_cam.transform.position, _cam.transform.forward, out hit, weapons[_currentWeaponIndex].fireRate))
         {
-            //TODO: Fire sesi eklenebilir.
-            //TODO: Effectide (mermi cikis-Muzzle effect) eklenebilir.
+        
             if (hit.transform.CompareTag("Enemy"))
             {
                 Instantiate(_bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
@@ -67,5 +81,11 @@ public class WeaponController : MonoBehaviour
         weaponObjects[_currentWeaponIndex].SetActive(false);
         weaponObjects[newWeaponIndex].SetActive(true);
         _currentWeaponIndex = newWeaponIndex;
+        ChangeText(_currentWeaponIndex);
+    }
+    private void ChangeText(int newWeaponIndex)
+    {
+        _totalBulletsText.text = weapons[newWeaponIndex].totalBullet.ToString();
+        _remainingBulletsText.text = weapons[newWeaponIndex].remainingBullet.ToString();
     }
 }

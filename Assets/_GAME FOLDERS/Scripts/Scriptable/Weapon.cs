@@ -7,7 +7,8 @@ public class Weapon : ScriptableObject
     public float reloadTime;
     public float fireRate;
     public float damage;
-    public int magazineSize;
+    public int totalBullet;
+    public int remainingBullet;
     public ParticleSystem bulletDecalEffect;
     public string fireAnimation;
 }

@@ -16,6 +16,7 @@ MonoBehaviour:
   reloadTime: 0.075
   fireRate: 75
   damage: 7
-  magazineSize: 30
+  totalBullet: 150
+  remainingBullet: 50
   bulletDecalEffect: {fileID: 198000013440722320, guid: 02a509a7fa70ed740ba4197e20c5d32d, type: 3}
   fireAnimation: WeaponFire
