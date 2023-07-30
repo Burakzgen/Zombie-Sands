@@ -17,3 +17,4 @@ MonoBehaviour:
   fireRate: 250
   damage: 50
   magazineSize: 10
+  bulletDecalEffect: {fileID: 198000013440722320, guid: 02a509a7fa70ed740ba4197e20c5d32d, type: 3}

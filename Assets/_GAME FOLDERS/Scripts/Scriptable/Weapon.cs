@@ -8,4 +8,6 @@ public class Weapon : ScriptableObject
     public float fireRate;
     public float damage;
     public int magazineSize;
+    public ParticleSystem bulletDecalEffect;
+
 }

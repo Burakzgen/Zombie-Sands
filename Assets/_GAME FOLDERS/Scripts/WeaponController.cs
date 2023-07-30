@@ -10,6 +10,9 @@ public class WeaponController : MonoBehaviour
     [SerializeField] private GameObject[] weaponObjects;
     Camera _cam;
     private int _currentWeaponIndex;
+
+    [SerializeField] private ParticleSystem _bloodEffect;
+
     private void Start()
     {
         _currentWeaponIndex = 0;
@@ -41,10 +44,18 @@ public class WeaponController : MonoBehaviour
     }
     private void Fire()
     {
+        weaponObjects[_currentWeaponIndex].GetComponent<Animator>().Play("WeaponFire");
         RaycastHit hit;
         if (Physics.Raycast(_cam.transform.position, _cam.transform.forward, out hit, weapons[_currentWeaponIndex].fireRate))
         {
-            Debug.Log(hit.transform.name);
+            //TODO: Fire sesi eklenebilir.
+            //TODO: Effectide (mermi cikis-Muzzle effect) eklenebilir.
+            if (hit.transform.CompareTag("Enemy"))
+            {
+                Instantiate(_bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            }
+            else
+                Instantiate(weapons[_currentWeaponIndex].bulletDecalEffect, hit.point, Quaternion.LookRotation(hit.normal));
         }
 
     }
