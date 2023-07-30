@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Weapon 4
   m_EditorClassIdentifier: 
   activationKey: 52
-  reloadTime: 0.1
-  fireRate: 100
-  damage: 12
-  totalBullet: 90
-  remainingBullet: 35
+  reloadTime: 0.3
+  fireRate: 120
+  damage: 10
+  totalBullet: 100
+  magazineSize: 30
   bulletDecalEffect: {fileID: 198000013440722320, guid: 02a509a7fa70ed740ba4197e20c5d32d, type: 3}
   fireAnimation: WeaponFire

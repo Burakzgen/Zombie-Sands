@@ -6,10 +6,10 @@ public class WeaponController : MonoBehaviour
     Camera _cam;
     [Header("WEAPON SETTINGS")]
     private int _currentWeaponIndex;
-
     private float _fireFreq;
+    private int remainingBullet;
     [SerializeField] private Weapon[] weapons;
-    [SerializeField] private GameObject[] weaponObjects;
+    [SerializeField] private GameObject[] weaponsObject;
     public bool isFire;
     [SerializeField] private TextMeshProUGUI _totalBulletsText;
     [SerializeField] private TextMeshProUGUI _remainingBulletsText;
@@ -19,12 +19,15 @@ public class WeaponController : MonoBehaviour
     private void Start()
     {
         _currentWeaponIndex = 0;
+
+        remainingBullet = weapons[_currentWeaponIndex].magazineSize;
+
         ChangeText(0);
         _cam = Camera.main;
 
         for (int i = 0; i < weapons.Length; i++)
         {
-            weaponObjects[i].SetActive(i == 0); // Only first weapon is active
+            weaponsObject[i].SetActive(i == 0); // Only first weapon is active
         }
     }
     private void Update()
@@ -38,11 +41,19 @@ public class WeaponController : MonoBehaviour
                     ChangeWeapon(i);
                 }
             }
+
         }
 
+        if (Input.GetKey(KeyCode.R))
+        {
+            if (remainingBullet <= weapons[_currentWeaponIndex].magazineSize)
+            {
+
+            }
+        }
         if (Input.GetKey(KeyCode.Mouse0))
         {
-            if (isFire && Time.time > _fireFreq && weapons[_currentWeaponIndex].remainingBullet != 0)
+            if (isFire && Time.time > _fireFreq && remainingBullet != 0)
             {
                 Fire();
                 _fireFreq = Time.time + weapons[_currentWeaponIndex].reloadTime;
@@ -58,15 +69,15 @@ public class WeaponController : MonoBehaviour
         //TODO: Fire sesi eklenebilir.
         //TODO: Effectide (mermi cikis-Muzzle effect) eklenebilir.
 
-        weaponObjects[_currentWeaponIndex].GetComponent<Animator>().Play(weapons[_currentWeaponIndex].fireAnimation);
+        weaponsObject[_currentWeaponIndex].GetComponent<Animator>().Play(weapons[_currentWeaponIndex].fireAnimation);
 
-        weapons[_currentWeaponIndex].remainingBullet--;
-        _remainingBulletsText.text = weapons[_currentWeaponIndex].remainingBullet.ToString();
+        remainingBullet--;
+        _remainingBulletsText.text = remainingBullet.ToString();
 
         RaycastHit hit;
         if (Physics.Raycast(_cam.transform.position, _cam.transform.forward, out hit, weapons[_currentWeaponIndex].fireRate))
         {
-        
+
             if (hit.transform.CompareTag("Enemy"))
             {
                 Instantiate(_bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
@@ -78,14 +89,15 @@ public class WeaponController : MonoBehaviour
     }
     private void ChangeWeapon(int newWeaponIndex)
     {
-        weaponObjects[_currentWeaponIndex].SetActive(false);
-        weaponObjects[newWeaponIndex].SetActive(true);
+        weaponsObject[_currentWeaponIndex].SetActive(false);
+        weaponsObject[newWeaponIndex].SetActive(true);
         _currentWeaponIndex = newWeaponIndex;
+        remainingBullet = weapons[_currentWeaponIndex].magazineSize;
         ChangeText(_currentWeaponIndex);
     }
     private void ChangeText(int newWeaponIndex)
     {
         _totalBulletsText.text = weapons[newWeaponIndex].totalBullet.ToString();
-        _remainingBulletsText.text = weapons[newWeaponIndex].remainingBullet.ToString();
+        _remainingBulletsText.text = remainingBullet.ToString();
     }
 }
