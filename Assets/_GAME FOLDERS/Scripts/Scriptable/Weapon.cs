@@ -9,5 +9,5 @@ public class Weapon : ScriptableObject
     public float damage;
     public int magazineSize;
     public ParticleSystem bulletDecalEffect;
-
+    public string fireAnimation;
 }

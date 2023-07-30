@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
-    public bool isFire;
+    Camera _cam;
+    [Header("WEAPON SETTINGS")]
+    private int _currentWeaponIndex;
     private float _fireFreq;
     [SerializeField] private Weapon[] weapons;
     [SerializeField] private GameObject[] weaponObjects;
-    Camera _cam;
-    private int _currentWeaponIndex;
+    public bool isFire;
 
+    [Header("PARTICAL SYSTEM")]
     [SerializeField] private ParticleSystem _bloodEffect;
 
     private void Start()
@@ -44,7 +46,8 @@ public class WeaponController : MonoBehaviour
     }
     private void Fire()
     {
-        weaponObjects[_currentWeaponIndex].GetComponent<Animator>().Play("WeaponFire");
+        weaponObjects[_currentWeaponIndex].GetComponent<Animator>().Play(weapons[_currentWeaponIndex].fireAnimation);
+
         RaycastHit hit;
         if (Physics.Raycast(_cam.transform.position, _cam.transform.forward, out hit, weapons[_currentWeaponIndex].fireRate))
         {
