@@ -7,6 +7,7 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private Transform _targetPosition;
     private void Start()
     {
+        _camera.DOFieldOfView(60, 1.5f);
         _camera.transform.DOMove(_targetPosition.position, 2.0f).OnComplete(() => _camera.gameObject.SetActive(false));
         //_camera.transform.DORotateQuaternion(_targeRotation, 2.0f)
     }
