@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
+    /*
     Camera _cam;
     [Header("WEAPON SETTINGS")]
     private int _currentWeaponIndex;
@@ -14,6 +15,7 @@ public class WeaponController : MonoBehaviour
     public bool isFire;
     [SerializeField] private TextMeshProUGUI _totalBulletsText;
     [SerializeField] private TextMeshProUGUI _remainingBulletsText;
+
     [Header("PARTICAL SYSTEM")]
     [SerializeField] private ParticleSystem _bloodEffect;
 
@@ -52,9 +54,17 @@ public class WeaponController : MonoBehaviour
             {
                 if (_remainingBullet != 0)
                 {
+                    if (weapons[_currentWeaponIndex].totalBullet <= weapons[_currentWeaponIndex].magazineSize)
+                    {
+                    }
+                    else
+                    {
+                        weapons[_currentWeaponIndex].totalBullet -= _bulletFired;
+                        _remainingBullet = weapons[_currentWeaponIndex].magazineSize;
+                    }
+
                     _bulletFired = weapons[_currentWeaponIndex].magazineSize - _remainingBullet;
-                    weapons[_currentWeaponIndex].totalBullet -= _bulletFired;
-                    _remainingBullet = weapons[_currentWeaponIndex].magazineSize;
+
 
                     ChangeBulletText(_currentWeaponIndex);
                 }
@@ -91,40 +101,12 @@ public class WeaponController : MonoBehaviour
             }
         }
     }
-    private void Fire()
-    {
-        //TODO: Fire sesi eklenebilir.
-        //TODO: Effectide (mermi cikis-Muzzle effect) eklenebilir.
-
-        weaponsObject[_currentWeaponIndex].GetComponent<Animator>().Play(weapons[_currentWeaponIndex].fireAnimation);
-
-        _remainingBullet--;
-        _remainingBulletsText.text = _remainingBullet.ToString();
-
-        RaycastHit hit;
-        if (Physics.Raycast(_cam.transform.position, _cam.transform.forward, out hit, weapons[_currentWeaponIndex].fireRate))
-        {
-
-            if (hit.transform.CompareTag("Enemy"))
-            {
-                Instantiate(_bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
-            }
-            else
-                Instantiate(weapons[_currentWeaponIndex].bulletDecalEffect, hit.point, Quaternion.LookRotation(hit.normal));
-        }
-
-    }
-    private void ChangeWeapon(int newWeaponIndex)
-    {
-        weaponsObject[_currentWeaponIndex].SetActive(false);
-        weaponsObject[newWeaponIndex].SetActive(true);
-        _currentWeaponIndex = newWeaponIndex;
-        _remainingBullet = weapons[_currentWeaponIndex].magazineSize;
-        ChangeBulletText(_currentWeaponIndex);
-    }
+    
+   
     private void ChangeBulletText(int newWeaponIndex)
     {
         _totalBulletsText.text = weapons[newWeaponIndex].totalBullet.ToString();
         _remainingBulletsText.text = _remainingBullet.ToString();
     }
+    */
 }
