@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 
 public class Weapon : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private Transform _bulletExitPoint;         // Mermi çýkýþ noktasý
     [SerializeField] private GameObject _bulletObject;          // Mermi çýkýþ noktasý
     [SerializeField] private bool isSniper = false;
+    [SerializeField] private bool isCameraShake = false;
     [SerializeField] private string _animationStateName;
     [Header("WEAPON SETTINGS")]
     public int magazineSize;                                    // Þarjör  kapasitesi
@@ -176,7 +178,11 @@ public class Weapon : MonoBehaviour
 
         Instantiate(_bulletObject, _bulletExitPoint.transform.position, _bulletExitPoint.transform.rotation);
 
-        //TODO: Kamera titremesi eklenebilir.
+        if (isCameraShake)
+        {
+            _cam.DOShakePosition(0.2f, 0.05f, 3,90,true);
+        }
+
         _fireSound.Play();
         _fireEffect.Play();
 
