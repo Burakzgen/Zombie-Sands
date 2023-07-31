@@ -5,25 +5,26 @@ public class EnemyController : MonoBehaviour
 {
     NavMeshAgent _agent;
     Animator _myAnimator;
-    [SerializeField] GameObject _target;
+    [SerializeField] Transform _target;
     [SerializeField] private float _health;
     private void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
-        _myAnimator=GetComponent<Animator>();
+        _myAnimator = GetComponent<Animator>();
     }
     private void Update()
     {
-        _agent.SetDestination(_target.transform.position);  
+        if (_target != null)
+            _agent.SetDestination(_target.transform.position);
     }
-    public void SetTarget(GameObject target)
+    public void SetTarget(Transform target)
     {
         _target = target;
     }
     public void TakeDamage(float damage)
     {
         _health -= damage;
-        if (_health<=0)
+        if (_health <= 0)
         {
             Dead();
             gameObject.tag = "Untagged";
