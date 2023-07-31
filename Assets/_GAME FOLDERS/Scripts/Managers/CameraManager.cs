@@ -5,6 +5,7 @@ public class CameraManager : MonoBehaviour
 {
     [SerializeField] private Camera _camera;
     [SerializeField] private Transform _targetPosition;
+    [SerializeField] private GameObject _crosshair;
     private void Start()
     {
         _camera.DOFieldOfView(60, 1.5f);
@@ -16,5 +17,6 @@ public class CameraManager : MonoBehaviour
     {
         _camera.gameObject.SetActive(false);
         GameManager.IsGameActive = true;
+        _crosshair.gameObject.SetActive(true);
     }
 }

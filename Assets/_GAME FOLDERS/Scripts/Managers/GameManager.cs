@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(8f);
+            yield return new WaitForSeconds(3f);
             int enemy = Random.Range(0, _enemies.Length);
             int spawnPoints = Random.Range(0, _enemySpawnPoints.Length);
 

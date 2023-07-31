@@ -7,17 +7,22 @@ public class EnemyController : MonoBehaviour
     Animator _myAnimator;
     [SerializeField] Transform _target;
     [SerializeField] private float _health;
+    bool _isDead;
     private void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
         _myAnimator = GetComponent<Animator>();
+        _isDead = false;
     }
     private void Update()
     {
         if (!GameManager.IsGameActive)
             return;
 
-        if (_target != null)
+        if (_isDead)
+            return;
+
+        if (_target != null )
             _agent.SetDestination(_target.transform.position);
     }
     public void SetTarget(Transform target)
@@ -38,6 +43,8 @@ public class EnemyController : MonoBehaviour
     {
         //TODO: Dusman sayýsýný güncelleme yapýlacak.
         _myAnimator.Play("Normal_Shot_Dead");
+        _isDead = true;
+        _agent.speed = 0;
         //TODO: Object pooling kontrolune göre ayarlanacak.
         Destroy(gameObject, 5f);
     }

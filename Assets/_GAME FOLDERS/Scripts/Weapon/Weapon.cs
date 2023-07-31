@@ -37,7 +37,7 @@ public class Weapon : MonoBehaviour
     //[SerializeField] private string _weaponName;                // Silah adý (PlayerPrefs için tutulancak)
     [SerializeField] private TextMeshProUGUI _totalBulletsText;                 // Toplam mermi sayýsý text
     [SerializeField] private TextMeshProUGUI _remainingBulletsText;             // Kalan mermi sayýsý text
-    public float impactForce;                                   // Darbe gücü (karakteri itme)
+    public float damage;                                   // Darbe gücü (karakteri itme)
 
     [Header("SOUNDS")]
     [SerializeField] private AudioSource _fireSound;            // Ateþ sesi
@@ -154,15 +154,18 @@ public class Weapon : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(_cam.transform.position, _cam.transform.forward, out hit, fireRange))
         {
+            //TODO: Object pooling kullnarak objeleri oluþturma yapýlmalý.
 
             if (hit.transform.CompareTag("Enemy"))
             {
+                hit.transform.gameObject.GetComponent<EnemyController>().TakeDamage(damage);
                 Instantiate(_bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
             }
             else if (hit.transform.CompareTag("OverEnemy"))
             {
+                hit.transform.gameObject.GetComponent<EnemyController>().TakeDamage(damage);
                 Rigidbody rg = hit.transform.gameObject.GetComponent<Rigidbody>();
-                rg.AddForce(-hit.normal * 25f);
+                rg.AddForce(-hit.normal * 50f);
                 Instantiate(_bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
             }
             else
