@@ -159,7 +159,7 @@ public class Weapon : MonoBehaviour
             else if (hit.transform.CompareTag("OverEnemy"))
             {
                 Rigidbody rg = hit.transform.gameObject.GetComponent<Rigidbody>();
-                rg.AddForce(-hit.normal * 50f);
+                rg.AddForce(-hit.normal * 25f);
                 Instantiate(_bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
             }
             else
