@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     //STATIC
-    //public static bool IsGameActive;
+    public static bool IsGameActive;
     //PRIVATE
     int _currentWeaponIndex;
     //PUBLIC
@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
+        if (!IsGameActive)
+            return;
+
         if (Input.anyKey&& !Input.GetKey(KeyCode.Mouse1))
         {
             for (int i = 0; i < _weaponsObject.Length; i++)

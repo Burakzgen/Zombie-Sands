@@ -65,6 +65,9 @@ public class Weapon : MonoBehaviour
     }
     private void Update()
     {
+        if (!GameManager.IsGameActive)
+            return;
+
         // Mermi atis
         if (Input.GetKey(KeyCode.Mouse0) && !Input.GetKey(KeyCode.Mouse1))
         {

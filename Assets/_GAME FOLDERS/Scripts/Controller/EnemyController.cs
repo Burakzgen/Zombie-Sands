@@ -14,6 +14,9 @@ public class EnemyController : MonoBehaviour
     }
     private void Update()
     {
+        if (!GameManager.IsGameActive)
+            return;
+
         if (_target != null)
             _agent.SetDestination(_target.transform.position);
     }
