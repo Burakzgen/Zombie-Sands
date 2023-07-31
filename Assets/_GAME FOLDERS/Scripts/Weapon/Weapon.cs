@@ -29,9 +29,10 @@ public class Weapon : MonoBehaviour
     [SerializeField] private Transform _bulletExitPoint;         // Mermi çýkýþ noktasý
     [SerializeField] private GameObject _bulletObject;          // Mermi çýkýþ noktasý
     [SerializeField] private bool isSniper = false;
+    [SerializeField] private string _animationStateName;
     [Header("WEAPON SETTINGS")]
     public int magazineSize;                                    // Þarjör  kapasitesi
-    [SerializeField] private string _weaponName;                // Silah adý
+    //[SerializeField] private string _weaponName;                // Silah adý (PlayerPrefs için tutulancak)
     [SerializeField] private TextMeshProUGUI _totalBulletsText;                 // Toplam mermi sayýsý text
     [SerializeField] private TextMeshProUGUI _remainingBulletsText;             // Kalan mermi sayýsý text
     public float impactForce;                                   // Darbe gücü (karakteri itme)
@@ -54,8 +55,11 @@ public class Weapon : MonoBehaviour
         _camFieldPov = _cam.fieldOfView;
         _isBulletCassing = true;
         AmmoReload();
-        AmmoReloadController("Normal");
 
+    }
+    private void OnEnable()
+    {
+        AmmoReloadController("NormalText");
     }
     private void Update()
     {
@@ -64,11 +68,11 @@ public class Weapon : MonoBehaviour
         {
             if (isFire && Time.time > _fireFreq && _remainingBullet != 0)
             {
-                Fire(false);
+                Fire();
                 _fireFreq = Time.time + fireRate;
             }
             if (_remainingBullet == 0)
-                Debug.Log("MERMI BITIS SESI"); //TODO: Mermi bitiþ sesi eklenecek
+                _bulletEndingSound.Play();
         }
 
         // Mermi Doldurma
@@ -83,8 +87,8 @@ public class Weapon : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             _isZoom = true;
-            if (isSniper)
-                CameraZoom(true);
+
+            CameraZoom(true);
             //_myAnimator.SetBool("Zoom", true);
 
 
@@ -92,8 +96,8 @@ public class Weapon : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Mouse1))
         {
             _isZoom = false;
-            if (isSniper)
-                CameraZoom(false);
+
+            CameraZoom(false);
         }
 
         if (_isZoom)
@@ -102,13 +106,13 @@ public class Weapon : MonoBehaviour
             {
                 if (isFire && Time.time > _fireFreq && _remainingBullet != 0)
                 {
-                    Fire(true);
+                    Fire();
                     _fireFreq = Time.time + fireRate;
 
                 }
 
                 if (_remainingBullet == 0)
-                    Debug.Log("MERMI BITIS SESI"); //TODO: Mermi bitiþ sesi eklenecek
+                    _bulletEndingSound.Play();
             }
         }
     }
@@ -120,22 +124,28 @@ public class Weapon : MonoBehaviour
     {
         if (state)
         {
-            _cross.SetActive(false);
-            _cam.cullingMask = ~(1 << 8);
+            if (isSniper)
+            {
+                _cross.SetActive(false);
+                _scope.SetActive(true);
+                _cam.cullingMask = ~(1 << 8);
+            }
             _cam.fieldOfView = _approachRange;
-            _scope.SetActive(true);
         }
         else
         {
-            _scope.SetActive(false);
-            _cam.cullingMask = -1;
+            if (isSniper)
+            {
+                _scope.SetActive(false);
+                _cross.SetActive(true);
+                _cam.cullingMask = -1;
+            }
             _cam.fieldOfView = _camFieldPov;
-            _cross.SetActive(true);
         }
     }
-    private void Fire(bool isZoom)
+    private void Fire()
     {
-        FireController(isZoom);
+        FireController();
         RaycastHit hit;
         if (Physics.Raycast(_cam.transform.position, _cam.transform.forward, out hit, fireRange))
         {
@@ -155,7 +165,7 @@ public class Weapon : MonoBehaviour
         }
 
     }
-    private void FireController(bool isZoom)
+    private void FireController()
     {
         if (_isBulletCassing)
         {
@@ -170,12 +180,7 @@ public class Weapon : MonoBehaviour
         _fireSound.Play();
         _fireEffect.Play();
 
-        //if (!isZoom)
-        //{
-        //    _myAnimator.Play("NormalFire");
-        //}
-        //else
-        //    _myAnimator.Play("ZoomFire");
+        _myAnimator.Play(_animationStateName);
 
         _remainingBullet--;
         _remainingBulletsText.text = _remainingBullet.ToString();
@@ -195,7 +200,9 @@ public class Weapon : MonoBehaviour
             _remainingBullet = magazineSize;
             _totalBullet -= magazineSize;
         }
+        AmmoReloadController("NormalText");
     }
+    // Animasyon üzerinden kontrol ediliyor.
     private void ChangerReload()
     {
         _reloadSound.Play();

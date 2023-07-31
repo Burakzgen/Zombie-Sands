@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.anyKey)
+        if (Input.anyKey&& !Input.GetKey(KeyCode.Mouse1))
         {
             for (int i = 0; i < weaponsObject.Length; i++)
             {
