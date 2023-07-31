@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +16,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject[] _enemies;
     [SerializeField] private Transform[] _enemySpawnPoints;
     [SerializeField] private Transform _targetPoint;
+    [Header("HEALTH CONTROLS")]
+    float _health;
+    [SerializeField] private Image _healthBar;
+
     void Start()
     {
         InitialSettings();
@@ -24,7 +29,7 @@ public class GameManager : MonoBehaviour
         if (!IsGameActive)
             return;
 
-        if (Input.anyKey&& !Input.GetKey(KeyCode.Mouse1))
+        if (Input.anyKey && !Input.GetKey(KeyCode.Mouse1))
         {
             for (int i = 0; i < _weaponsObject.Length; i++)
             {
@@ -48,11 +53,32 @@ public class GameManager : MonoBehaviour
             obj.GetComponent<EnemyController>().SetTarget(_targetPoint);
         }
     }
+    public void TakeDamage(float damage)
+    {
+        _health -= damage;
+        if (_health < 0)
+        {
+            _healthBar.fillAmount = 0;
+            GameOver();
+        }
+        else
+        {
+            _healthBar.fillAmount -= damage / 100;
+        }
+
+    }
+    private void GameOver()
+    {
+        IsGameActive = false;
+        //TODO: Gameover panaeli gelecek
+    }
     private void InitialSettings()
     {
-        //IsGameActive = false;
+        _health = 100;
+        _healthBar.fillAmount = 1f;
         _currentWeaponIndex = 0;
         //TODO: Oyun sesi aktif edilebilir.
+
         //TODO: Düþman oluþturma baþlatýlabilir.
         StartCoroutine(SpawnEnemy());
     }

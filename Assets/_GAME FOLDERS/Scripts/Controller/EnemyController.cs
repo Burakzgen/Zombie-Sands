@@ -7,6 +7,7 @@ public class EnemyController : MonoBehaviour
     Animator _myAnimator;
     [SerializeField] Transform _target;
     [SerializeField] private float _health;
+    [SerializeField] private float _damage;
     bool _isDead;
     private void Start()
     {
@@ -47,5 +48,13 @@ public class EnemyController : MonoBehaviour
         _agent.speed = 0;
         //TODO: Object pooling kontrolune göre ayarlanacak.
         Destroy(gameObject, 5f);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Target"))
+        {
+            GameManager gm = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
+            gm.TakeDamage(_damage);
+        }
     }
 }

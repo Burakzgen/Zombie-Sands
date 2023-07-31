@@ -18,6 +18,7 @@ public class Weapon : MonoBehaviour
     public float fireRate;                                      // Ateþ etme sýklýðý dýþ kontrolu
     public float fireRange;                                     // Ateþ etme menzili
     [SerializeField] private int _totalBullet;                   // Toplam mermi sayýsý
+    [SerializeField] private CameraController _cameraController;
 
     [Header("OTHER SETTINGS")]
     public KeyCode activationKey;
@@ -134,6 +135,7 @@ public class Weapon : MonoBehaviour
                 _cross.SetActive(false);
                 _scope.SetActive(true);
                 _cam.cullingMask = ~(1 << 8);
+                _cameraController.mouseSensitivity = 10;
             }
             _cam.fieldOfView = _approachRange;
         }
@@ -144,6 +146,7 @@ public class Weapon : MonoBehaviour
                 _scope.SetActive(false);
                 _cross.SetActive(true);
                 _cam.cullingMask = -1;
+                _cameraController.mouseSensitivity = 100;
             }
             _cam.fieldOfView = _camFieldPov;
         }

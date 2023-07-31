@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     [SerializeField] private CursorLockMode isCursorMode = CursorLockMode.Locked;
-    [SerializeField] private float mouseSensitivity = 100f;
+    public float mouseSensitivity = 100f;
     [SerializeField] private Transform _playerBody;
 
     [SerializeField] private float _xMin, _xMax;

@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator Breathe()
     {
-        while (GameManager.IsGameActive)
+        while (true)
         {
             float duration = Random.Range(0.5f, 1.5f); 
 

@@ -8,6 +8,7 @@ TagManager:
   - OverEnemy
   - Ground
   - Target
+  - GameManager
   layers:
   - Default
   - TransparentFX
