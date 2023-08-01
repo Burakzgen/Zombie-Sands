@@ -20,17 +20,6 @@ public class EnemyController : MonoBehaviour
         if (_target != null)
             _agent.SetDestination(_target.transform.position);
     }
-    //private void Update()
-    //{
-    //    if (!GameManager.IsGameActive)
-    //        return;
-
-    //    if (_isDead)
-    //        return;
-
-         //if (_target != null)
-         //   _agent.SetDestination(_target.transform.position);
-    //}
     public void SetTarget(Transform target)
     {
         _target = target;
@@ -60,6 +49,7 @@ public class EnemyController : MonoBehaviour
             _gameManager.TakeDamage(_damage);
             _gameManager.UpdateEnemyCount();
             gameObject.GetComponent<CapsuleCollider>().enabled = false;
+            Destroy(gameObject, 0.5f);
         }
     }
 

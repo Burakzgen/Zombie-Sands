@@ -119,17 +119,21 @@ public class GameManager : MonoBehaviour
     }
     private void GameOver()
     {
+        //TODO: TimeScale yerine alternatif bir yol yapýlmalý.
         IsGameActive = false;
         StopAllCoroutines();
         Cursor.lockState = CursorLockMode.None;
+        //Time.timeScale = 0;
         _cameraManager.EndGameCamEffect();
         _gameOverPanelObject.SetActive(true);
     }
     private void Win()
     {
+        //TODO: TimeScale yerine alternatif bir yol yapýlmalý.
         IsGameActive = false;
         StopAllCoroutines();
         Cursor.lockState = CursorLockMode.None;
+        //Time.timeScale = 0;
         _cameraManager.EndGameCamEffect();
         _winPanelObject.SetActive(true);
         _remainingEnemyText.text = 0.ToString();
