@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,18 +8,25 @@ public class GameManager : MonoBehaviour
 {
     //STATIC
     public static bool IsGameActive;
+    public static int reamingEnemyCount;
     //PRIVATE
     int _currentWeaponIndex;
     //PUBLIC
     [Header("OTHERS CONTROLS")]
     [SerializeField] private CameraManager _cameraManager;
-    [SerializeField] private GameObject _gameOverObject;
+    [SerializeField] private GameObject _gameOverObject; 
+    [SerializeField] private TextMeshProUGUI _remainingEnemyText;
+    [SerializeField] private TextMeshProUGUI _totalEnemyText;
+
     [Header("WEAPON CONTROLS")]
     [SerializeField] private GameObject[] _weaponsObject;
+
     [Header("ENEMY CONTROLS")]
     [SerializeField] private GameObject[] _enemies;
     [SerializeField] private Transform[] _enemySpawnPoints;
     [SerializeField] private Transform _targetPoint;
+    [SerializeField] private int _totalEnemyCount;
+
     [Header("HEALTH CONTROLS")]
     float _health;
     [SerializeField] private Image _healthBar;
@@ -44,16 +52,42 @@ public class GameManager : MonoBehaviour
 
         }
     }
+    private void InitialSettings()
+    {
+        //Enemy Count
+        reamingEnemyCount = _totalEnemyCount;
+        _totalEnemyText.text = reamingEnemyCount.ToString();
+        _remainingEnemyText.text = _totalEnemyCount.ToString();
+
+        _health = 100;
+        _healthBar.fillAmount = 1f;
+        _currentWeaponIndex = 0;
+        //TODO: Oyun sesi aktif edilebilir.
+
+        //TODO: Düþman oluþturma baþlatýlabilir.
+        StartCoroutine(SpawnEnemy());
+    }
+    public void UpdateEnemyCount()
+    {
+        reamingEnemyCount--;
+        _remainingEnemyText.text = reamingEnemyCount.ToString();
+    }
     IEnumerator SpawnEnemy()
     {
         while (true)
         {
             yield return new WaitForSeconds(3f);
-            int enemy = Random.Range(0, _enemies.Length);
-            int spawnPoints = Random.Range(0, _enemySpawnPoints.Length);
 
-            GameObject obj = Instantiate(_enemies[enemy], _enemySpawnPoints[spawnPoints].transform.position, Quaternion.identity);
-            obj.GetComponent<EnemyController>().SetTarget(_targetPoint);
+            if (_totalEnemyCount != 0)
+            {
+                int enemy = Random.Range(0, _enemies.Length);
+                int spawnPoints = Random.Range(0, _enemySpawnPoints.Length);
+
+                GameObject obj = Instantiate(_enemies[enemy], _enemySpawnPoints[spawnPoints].transform.position, Quaternion.identity);
+                obj.GetComponent<EnemyController>().SetTarget(_targetPoint);
+                _totalEnemyCount--;
+            }
+
         }
     }
     public void TakeDamage(float damage)
@@ -75,16 +109,6 @@ public class GameManager : MonoBehaviour
         IsGameActive = false;
         _cameraManager.GameOverCamPosition();
         _gameOverObject.SetActive(true);
-    }
-    private void InitialSettings()
-    {
-        _health = 100;
-        _healthBar.fillAmount = 1f;
-        _currentWeaponIndex = 0;
-        //TODO: Oyun sesi aktif edilebilir.
-
-        //TODO: Düþman oluþturma baþlatýlabilir.
-        StartCoroutine(SpawnEnemy());
     }
     private void ChangeWeapon(int newWeaponIndex)
     {

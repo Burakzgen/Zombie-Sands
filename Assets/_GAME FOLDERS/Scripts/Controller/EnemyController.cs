@@ -9,10 +9,13 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float _health;
     [SerializeField] private float _damage;
     bool _isDead;
+    GameManager _gameManager;
     private void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
         _myAnimator = GetComponent<Animator>();
+
+        _gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         _isDead = false;
     }
     private void Update()
@@ -42,7 +45,7 @@ public class EnemyController : MonoBehaviour
 
     private void Dead()
     {
-        //TODO: Dusman sayýsýný güncelleme yapýlacak.
+        _gameManager.UpdateEnemyCount();
         _myAnimator.Play("Normal_Shot_Dead");
         _isDead = true;
         _agent.speed = 0;
@@ -51,10 +54,11 @@ public class EnemyController : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Target"))
+        if (other.gameObject.CompareTag("Home"))
         {
-            GameManager gm = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
-            gm.TakeDamage(_damage);
+            _gameManager.TakeDamage(_damage);
+            gameObject.GetComponent<CapsuleCollider>().enabled = false;
         }
     }
+
 }
