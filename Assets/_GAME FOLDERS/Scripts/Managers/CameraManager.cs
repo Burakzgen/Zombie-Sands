@@ -16,24 +16,20 @@ public class CameraManager : MonoBehaviour
         _camera.DOFieldOfView(60, 1.5f);
         _camera.DOFieldOfView(15, 1.5f);
         _camera.transform.DOMove(_targetPosition.position, 2.0f)
-            .OnComplete(StartGame);
+            .OnComplete(StartGameDelay);
         //_camera.transform.DORotateQuaternion(_targeRotation, 2.0f)
     }
-    public void GameOverCamPosition()
+    public void EndGameCamEffect()
     {
         _camera.gameObject.SetActive(true);
-        _camera.transform.DOMove(_startCamPosition.position, 2.0f)
-            .OnComplete(GameOver);
+        _crosshair.gameObject.SetActive(false);
+        GameManager.IsGameActive = false;
+        _camera.transform.DOMove(_startCamPosition.position, 2.0f);
     }
-    private void StartGame()
+    private void StartGameDelay()
     {
         _camera.gameObject.SetActive(false);
         GameManager.IsGameActive = true;
         _crosshair.gameObject.SetActive(true);
-    }
-    private void GameOver()
-    {
-        _crosshair.gameObject.SetActive(false);
-        GameManager.IsGameActive = false;
     }
 }

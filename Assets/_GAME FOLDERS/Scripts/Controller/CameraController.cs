@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] private CursorLockMode isCursorMode = CursorLockMode.Locked;
     public float mouseSensitivity = 100f;
     [SerializeField] private Transform _playerBody;
 
@@ -13,12 +12,7 @@ public class CameraController : MonoBehaviour
 
     private float _xRotation = 0f;
     private float _yRotation = 0f;
-    void Start()
-    {
-        //Cursor kapatma islemi
-        Cursor.lockState = isCursorMode;
-    }
-
+  
     void Update()
     {
         if (!GameManager.IsGameActive)

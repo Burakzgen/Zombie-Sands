@@ -13,8 +13,10 @@ public class GameManager : MonoBehaviour
     int _currentWeaponIndex;
     //PUBLIC
     [Header("OTHERS CONTROLS")]
+
     [SerializeField] private CameraManager _cameraManager;
-    [SerializeField] private GameObject _gameOverObject; 
+    [SerializeField] private GameObject _gameOverPanelObject; 
+    [SerializeField] private GameObject _winPanelObject; 
     [SerializeField] private TextMeshProUGUI _remainingEnemyText;
     [SerializeField] private TextMeshProUGUI _totalEnemyText;
 
@@ -54,6 +56,9 @@ public class GameManager : MonoBehaviour
     }
     private void InitialSettings()
     {
+
+        Cursor.lockState = CursorLockMode.Locked;
+
         //Enemy Count
         reamingEnemyCount = _totalEnemyCount;
         _totalEnemyText.text = reamingEnemyCount.ToString();
@@ -70,7 +75,15 @@ public class GameManager : MonoBehaviour
     public void UpdateEnemyCount()
     {
         reamingEnemyCount--;
-        _remainingEnemyText.text = reamingEnemyCount.ToString();
+        if (reamingEnemyCount<=0)
+        {
+            // WIN
+            //TODO: Oyun durdurma iþlemi yapýlacak. Delay eklenebilri
+            Win();
+        }
+        else
+            _remainingEnemyText.text = reamingEnemyCount.ToString();
+
     }
     IEnumerator SpawnEnemy()
     {
@@ -107,8 +120,19 @@ public class GameManager : MonoBehaviour
     private void GameOver()
     {
         IsGameActive = false;
-        _cameraManager.GameOverCamPosition();
-        _gameOverObject.SetActive(true);
+        StopAllCoroutines();
+        Cursor.lockState = CursorLockMode.None;
+        _cameraManager.EndGameCamEffect();
+        _gameOverPanelObject.SetActive(true);
+    }
+    private void Win()
+    {
+        IsGameActive = false;
+        StopAllCoroutines();
+        Cursor.lockState = CursorLockMode.None;
+        _cameraManager.EndGameCamEffect();
+        _winPanelObject.SetActive(true);
+        _remainingEnemyText.text = 0.ToString();
     }
     private void ChangeWeapon(int newWeaponIndex)
     {

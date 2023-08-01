@@ -57,6 +57,7 @@ public class EnemyController : MonoBehaviour
         if (other.gameObject.CompareTag("Home"))
         {
             _gameManager.TakeDamage(_damage);
+            _gameManager.UpdateEnemyCount();
             gameObject.GetComponent<CapsuleCollider>().enabled = false;
         }
     }
