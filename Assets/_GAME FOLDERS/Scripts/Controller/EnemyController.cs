@@ -48,7 +48,7 @@ public class EnemyController : MonoBehaviour
         {
             _gameManager.TakeDamage(_damage);
             _gameManager.UpdateEnemyCount();
-            gameObject.GetComponent<CapsuleCollider>().enabled = false;
+            gameObject.GetComponent<CharacterController>().enabled = false;
             Destroy(gameObject, 0.5f);
         }
     }
