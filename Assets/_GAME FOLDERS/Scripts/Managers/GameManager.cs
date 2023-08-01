@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     //PRIVATE
     int _currentWeaponIndex;
     //PUBLIC
+    [Header("OTHERS CONTROLS")]
+    [SerializeField] private CameraManager _cameraManager;
+    [SerializeField] private GameObject _gameOverObject;
     [Header("WEAPON CONTROLS")]
     [SerializeField] private GameObject[] _weaponsObject;
     [Header("ENEMY CONTROLS")]
@@ -70,7 +73,8 @@ public class GameManager : MonoBehaviour
     private void GameOver()
     {
         IsGameActive = false;
-        //TODO: Gameover panaeli gelecek
+        _cameraManager.GameOverCamPosition();
+        _gameOverObject.SetActive(true);
     }
     private void InitialSettings()
     {
