@@ -8,7 +8,6 @@ public class EnemyController : MonoBehaviour
     [SerializeField] Transform _target;
     [SerializeField] private float _health;
     [SerializeField] private float _damage;
-    bool _isDead;
     GameManager _gameManager;
     private void Start()
     {
@@ -16,19 +15,22 @@ public class EnemyController : MonoBehaviour
         _myAnimator = GetComponent<Animator>();
 
         _gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
-        _isDead = false;
-    }
-    private void Update()
-    {
-        if (!GameManager.IsGameActive)
-            return;
+        //_isDead = false;
 
-        if (_isDead)
-            return;
-
-        if (_target != null )
+        if (_target != null)
             _agent.SetDestination(_target.transform.position);
     }
+    //private void Update()
+    //{
+    //    if (!GameManager.IsGameActive)
+    //        return;
+
+    //    if (_isDead)
+    //        return;
+
+         //if (_target != null)
+         //   _agent.SetDestination(_target.transform.position);
+    //}
     public void SetTarget(Transform target)
     {
         _target = target;
@@ -47,7 +49,6 @@ public class EnemyController : MonoBehaviour
     {
         _gameManager.UpdateEnemyCount();
         _myAnimator.Play("Normal_Shot_Dead");
-        _isDead = true;
         _agent.speed = 0;
         //TODO: Object pooling kontrolune göre ayarlanacak.
         Destroy(gameObject, 5f);

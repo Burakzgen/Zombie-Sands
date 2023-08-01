@@ -602,7 +602,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 730369135383908689}
-  - component: {fileID: 730369135390832833}
   m_Layer: 0
   m_Name: TT_zombie_M_12_police
   m_TagString: Untagged
@@ -648,27 +647,6 @@ Transform:
   m_Father: {fileID: 2573981674319109605}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &730369135390832833
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 730369135383489509}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: a1aade9bc7779e24b8219a8ceb948e08, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &730369135383491263
 GameObject:
   m_ObjectHideFlags: 0
@@ -5521,7 +5499,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 2f385ed85e85cfe48beec9953e937924, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -5540,8 +5518,8 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.28
   m_Speed: 4
-  m_Acceleration: 5
-  avoidancePriority: 50
+  m_Acceleration: 7
+  avoidancePriority: 0
   m_AngularSpeed: 120
   m_StoppingDistance: 0.5
   m_AutoTraverseOffMeshLink: 1
@@ -5550,7 +5528,7 @@ NavMeshAgent:
   m_Height: 1.64
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 3
 --- !u!114 &2573981673765359074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5592,7 +5570,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
