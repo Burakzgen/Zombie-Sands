@@ -94,9 +94,10 @@ GameObject:
   - component: {fileID: 5423296801626626139}
   - component: {fileID: 5423296801623183959}
   - component: {fileID: 5423296801624387155}
+  - component: {fileID: 8444813589483490804}
   m_Layer: 0
   m_Name: Z_head_19_nurse
-  m_TagString: Untagged
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -166,6 +167,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &8444813589483490804
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626165789}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.33830816
+  m_Center: {x: 0.00046730624, y: 0.020339817, z: 0.068211384}
 --- !u!1 &5423296801626166527
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,9 +221,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5423296801626635935}
   - component: {fileID: 5423296801629287181}
+  - component: {fileID: 6321416032163759220}
   m_Layer: 0
   m_Name: Body_02_Tshirt
-  m_TagString: Untagged
+  m_TagString: Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -297,6 +312,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.07043731, y: 0.02187974, z: 0.00000008940697}
     m_Extent: {x: 0.5246882, y: 0.2443285, z: 0.75921917}
   m_DirtyAABB: 0
+--- !u!136 &6321416032163759220
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626167735}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.32480866
+  m_Height: 1.0693607
+  m_Direction: 2
+  m_Center: {x: -0.0067054057, y: 0.01124059, z: 0.4948181}
 --- !u!1 &5423296801626168955
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,13 +337,14 @@ GameObject:
   - component: {fileID: 5423296801626524267}
   - component: {fileID: 5423296801623150013}
   - component: {fileID: 5423296801624197679}
+  - component: {fileID: 8335401751922047873}
   m_Layer: 0
   m_Name: Z_head_05
-  m_TagString: Untagged
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5423296801626524267
 Transform:
   m_ObjectHideFlags: 0
@@ -380,6 +410,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &8335401751922047873
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626168955}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.33830816
+  m_Center: {x: 0.00046730624, y: 0.020339817, z: 0.068211384}
 --- !u!1 &5423296801626173119
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,9 +433,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5423296801626548961}
   - component: {fileID: 5423296801629275935}
+  - component: {fileID: 8769430843057886658}
   m_Layer: 0
   m_Name: Body_06_blackSuit
-  m_TagString: Untagged
+  m_TagString: Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -480,6 +524,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.07043731, y: 0.02187974, z: 0.00000008940697}
     m_Extent: {x: 0.5246882, y: 0.2443285, z: 0.75921917}
   m_DirtyAABB: 0
+--- !u!136 &8769430843057886658
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626173119}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.32480866
+  m_Height: 1.0693607
+  m_Direction: 2
+  m_Center: {x: -0.0067054057, y: 0.01124059, z: 0.4948181}
 --- !u!1 &5423296801626176305
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,9 +549,10 @@ GameObject:
   - component: {fileID: 5423296801626530201}
   - component: {fileID: 5423296801623139915}
   - component: {fileID: 5423296801624225495}
+  - component: {fileID: 1544402926690952686}
   m_Layer: 0
   m_Name: Z_head_01
-  m_TagString: Untagged
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -563,6 +622,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &1544402926690952686
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626176305}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.33830816
+  m_Center: {x: 0.00046730624, y: 0.020339817, z: 0.068211384}
 --- !u!1 &5423296801626176919
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,9 +646,10 @@ GameObject:
   - component: {fileID: 5423296801626575913}
   - component: {fileID: 5423296801623141307}
   - component: {fileID: 5423296801624197345}
+  - component: {fileID: 6839099324014390873}
   m_Layer: 0
   m_Name: Z_head_10_hat
-  m_TagString: Untagged
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -646,6 +719,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &6839099324014390873
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626176919}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.33830816
+  m_Center: {x: 0.00046730624, y: 0.020339817, z: 0.068211384}
 --- !u!1 &5423296801626178791
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,9 +743,10 @@ GameObject:
   - component: {fileID: 5423296801626591637}
   - component: {fileID: 5423296801623231701}
   - component: {fileID: 5423296801624184627}
+  - component: {fileID: 3083369131397007183}
   m_Layer: 0
   m_Name: Z_head_09_cap
-  m_TagString: Untagged
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -729,6 +816,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &3083369131397007183
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626178791}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.33830816
+  m_Center: {x: 0.00046730624, y: 0.020339817, z: 0.068211384}
 --- !u!1 &5423296801626182035
 GameObject:
   m_ObjectHideFlags: 0
@@ -835,9 +935,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5423296801626571821}
   - component: {fileID: 5423296801629297811}
+  - component: {fileID: 6845094250525949380}
   m_Layer: 0
   m_Name: Body_19_butcher
-  m_TagString: Untagged
+  m_TagString: Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -925,6 +1026,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.07043731, y: 0.021879748, z: 0.00092592835}
     m_Extent: {x: 0.5246882, y: 0.24432848, z: 0.7644445}
   m_DirtyAABB: 0
+--- !u!136 &6845094250525949380
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626184001}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.32480866
+  m_Height: 1.0693607
+  m_Direction: 2
+  m_Center: {x: -0.0067054057, y: 0.01124059, z: 0.4948181}
 --- !u!1 &5423296801626184291
 GameObject:
   m_ObjectHideFlags: 0
@@ -935,9 +1050,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5423296801626547767}
   - component: {fileID: 5423296801629493565}
+  - component: {fileID: 7136168448030487658}
   m_Layer: 0
   m_Name: Body_11_farmer_B
-  m_TagString: Untagged
+  m_TagString: Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1025,6 +1141,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.07043731, y: 0.02187974, z: 0.00000008940697}
     m_Extent: {x: 0.5246882, y: 0.2443285, z: 0.75921917}
   m_DirtyAABB: 0
+--- !u!136 &7136168448030487658
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626184291}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.32480866
+  m_Height: 1.0693607
+  m_Direction: 2
+  m_Center: {x: -0.0067054057, y: 0.01124059, z: 0.4948181}
 --- !u!1 &5423296801626184447
 GameObject:
   m_ObjectHideFlags: 0
@@ -1119,9 +1249,10 @@ GameObject:
   - component: {fileID: 5423296801626639143}
   - component: {fileID: 5423296801623128145}
   - component: {fileID: 5423296801624364513}
+  - component: {fileID: 7444699902263830532}
   m_Layer: 0
   m_Name: Z_head_11_hat
-  m_TagString: Untagged
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1191,6 +1322,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &7444699902263830532
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626185273}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.33830816
+  m_Center: {x: 0.00046730624, y: 0.020339817, z: 0.068211384}
 --- !u!1 &5423296801626185667
 GameObject:
   m_ObjectHideFlags: 0
@@ -1297,9 +1441,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5423296801626550987}
   - component: {fileID: 5423296801629478169}
+  - component: {fileID: 6803640008632050862}
   m_Layer: 0
   m_Name: Body_18_nurse
-  m_TagString: Untagged
+  m_TagString: Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1387,6 +1532,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.07043731, y: 0.02187974, z: 0.00000008940697}
     m_Extent: {x: 0.5246882, y: 0.2443285, z: 0.75921917}
   m_DirtyAABB: 0
+--- !u!136 &6803640008632050862
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626191437}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.32480866
+  m_Height: 1.0693607
+  m_Direction: 2
+  m_Center: {x: -0.0067054057, y: 0.01124059, z: 0.4948181}
 --- !u!1 &5423296801626192943
 GameObject:
   m_ObjectHideFlags: 0
@@ -1549,9 +1708,10 @@ GameObject:
   - component: {fileID: 5423296801626636539}
   - component: {fileID: 5423296801623123343}
   - component: {fileID: 5423296801624363665}
+  - component: {fileID: 2750581737409383931}
   m_Layer: 0
   m_Name: Z_head_18_police_helmet
-  m_TagString: Untagged
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1621,6 +1781,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &2750581737409383931
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626278195}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.33830816
+  m_Center: {x: 0.00046730624, y: 0.020339817, z: 0.068211384}
 --- !u!1 &5423296801626278219
 GameObject:
   m_ObjectHideFlags: 0
@@ -1631,9 +1804,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5423296801626588113}
   - component: {fileID: 5423296801629307167}
+  - component: {fileID: 4631793383237477289}
   m_Layer: 0
   m_Name: Body_03_jacket
-  m_TagString: Untagged
+  m_TagString: Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1721,6 +1895,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.07043731, y: 0.02187974, z: -0.002869308}
     m_Extent: {x: 0.5246882, y: 0.2443285, z: 0.7620886}
   m_DirtyAABB: 0
+--- !u!136 &4631793383237477289
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626278219}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.32480866
+  m_Height: 1.0693607
+  m_Direction: 2
+  m_Center: {x: -0.0067054057, y: 0.01124059, z: 0.4948181}
 --- !u!1 &5423296801626327473
 GameObject:
   m_ObjectHideFlags: 0
@@ -1764,9 +1952,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5423296801626540461}
   - component: {fileID: 5423296801629290889}
+  - component: {fileID: 4690036689517529790}
   m_Layer: 0
   m_Name: Body_21_soldier
-  m_TagString: Untagged
+  m_TagString: Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1854,6 +2043,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.07043731, y: 0.0006784797, z: 0.00000008940697}
     m_Extent: {x: 0.5246882, y: 0.26552975, z: 0.75921917}
   m_DirtyAABB: 0
+--- !u!136 &4690036689517529790
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626328201}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.32480866
+  m_Height: 1.0693607
+  m_Direction: 2
+  m_Center: {x: -0.0067054057, y: 0.01124059, z: 0.4948181}
 --- !u!1 &5423296801626328233
 GameObject:
   m_ObjectHideFlags: 0
@@ -1896,9 +2099,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5423296801626638589}
   - component: {fileID: 5423296801629491177}
+  - component: {fileID: 8922083666069089706}
   m_Layer: 0
   m_Name: Body_04_torso
-  m_TagString: Untagged
+  m_TagString: Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1986,6 +2190,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.07043281, y: 0.027514294, z: -0.002869308}
     m_Extent: {x: 0.5246837, y: 0.23869394, z: 0.7620886}
   m_DirtyAABB: 0
+--- !u!136 &8922083666069089706
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626328609}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.32480866
+  m_Height: 1.0693607
+  m_Direction: 2
+  m_Center: {x: -0.0067054057, y: 0.01124059, z: 0.4948181}
 --- !u!1 &5423296801626332325
 GameObject:
   m_ObjectHideFlags: 0
@@ -2029,9 +2247,10 @@ GameObject:
   - component: {fileID: 5423296801626635325}
   - component: {fileID: 5423296801623243093}
   - component: {fileID: 5423296801624365113}
+  - component: {fileID: 4175054364445632101}
   m_Layer: 0
   m_Name: Z_head_02
-  m_TagString: Untagged
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2101,6 +2320,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &4175054364445632101
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626332615}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.33830816
+  m_Center: {x: 0.00046730624, y: 0.020339817, z: 0.068211384}
 --- !u!1 &5423296801626332817
 GameObject:
   m_ObjectHideFlags: 0
@@ -2143,9 +2375,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5423296801626650929}
   - component: {fileID: 5423296801629280641}
+  - component: {fileID: 8770618491703300660}
   m_Layer: 0
   m_Name: Body_13_police_B
-  m_TagString: Untagged
+  m_TagString: Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2233,6 +2466,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.07043731, y: 0.02187974, z: 0.00000008940697}
     m_Extent: {x: 0.5246882, y: 0.2443285, z: 0.75921917}
   m_DirtyAABB: 0
+--- !u!136 &8770618491703300660
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626334165}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.32480866
+  m_Height: 1.0693607
+  m_Direction: 2
+  m_Center: {x: -0.0067054057, y: 0.01124059, z: 0.4948181}
 --- !u!1 &5423296801626334753
 GameObject:
   m_ObjectHideFlags: 0
@@ -2244,9 +2491,10 @@ GameObject:
   - component: {fileID: 5423296801626595195}
   - component: {fileID: 5423296801623131203}
   - component: {fileID: 5423296801624410651}
+  - component: {fileID: 8296665465251025282}
   m_Layer: 0
   m_Name: Z_head_15_punk
-  m_TagString: Untagged
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2316,6 +2564,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &8296665465251025282
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626334753}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.33830816
+  m_Center: {x: 0.00046730624, y: 0.020339817, z: 0.068211384}
 --- !u!1 &5423296801626335451
 GameObject:
   m_ObjectHideFlags: 0
@@ -2441,9 +2702,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5423296801626639737}
   - component: {fileID: 5423296801629277055}
+  - component: {fileID: 5243131511251588295}
   m_Layer: 0
   m_Name: Body_01_tanktop
-  m_TagString: Untagged
+  m_TagString: Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2531,6 +2793,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.07043731, y: 0.02187974, z: 0.00000008940697}
     m_Extent: {x: 0.5246882, y: 0.2443285, z: 0.75921917}
   m_DirtyAABB: 0
+--- !u!136 &5243131511251588295
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626336861}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.32480866
+  m_Height: 1.0693607
+  m_Direction: 2
+  m_Center: {x: -0.0067054057, y: 0.01124059, z: 0.4948181}
 --- !u!1 &5423296801626337129
 GameObject:
   m_ObjectHideFlags: 0
@@ -2625,9 +2901,10 @@ GameObject:
   - component: {fileID: 5423296801626571541}
   - component: {fileID: 5423296801623144399}
   - component: {fileID: 5423296801624201835}
+  - component: {fileID: 1822744760959666917}
   m_Layer: 0
   m_Name: Z_head_12_hat
-  m_TagString: Untagged
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2697,6 +2974,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &1822744760959666917
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626338735}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.33830816
+  m_Center: {x: 0.00046730624, y: 0.020339817, z: 0.068211384}
 --- !u!1 &5423296801626339443
 GameObject:
   m_ObjectHideFlags: 0
@@ -2707,9 +2997,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5423296801626629883}
   - component: {fileID: 5423296801629300981}
+  - component: {fileID: 4537296003806841990}
   m_Layer: 0
   m_Name: Body_10_farmer_A
-  m_TagString: Untagged
+  m_TagString: Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2797,6 +3088,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.07043731, y: 0.02187974, z: 0.00000008940697}
     m_Extent: {x: 0.5246882, y: 0.2443285, z: 0.75921917}
   m_DirtyAABB: 0
+--- !u!136 &4537296003806841990
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626339443}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.32480866
+  m_Height: 1.0693607
+  m_Direction: 2
+  m_Center: {x: -0.0067054057, y: 0.01124059, z: 0.4948181}
 --- !u!1 &5423296801626339601
 GameObject:
   m_ObjectHideFlags: 0
@@ -2808,9 +3113,10 @@ GameObject:
   - component: {fileID: 5423296801626637095}
   - component: {fileID: 5423296801623215793}
   - component: {fileID: 5423296801624206617}
+  - component: {fileID: 656624831178098657}
   m_Layer: 0
   m_Name: Z_head_13_brains
-  m_TagString: Untagged
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2880,6 +3186,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &656624831178098657
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626339601}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.33830816
+  m_Center: {x: 0.00046730624, y: 0.020339817, z: 0.068211384}
 --- !u!1 &5423296801626342509
 GameObject:
   m_ObjectHideFlags: 0
@@ -2922,9 +3241,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5423296801626600575}
   - component: {fileID: 5423296801629315927}
+  - component: {fileID: 156938743046689763}
   m_Layer: 0
   m_Name: Body_05_redTie
-  m_TagString: Untagged
+  m_TagString: Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3012,6 +3332,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.07043731, y: 0.02187974, z: 0.00000008940697}
     m_Extent: {x: 0.5246882, y: 0.2443285, z: 0.75921917}
   m_DirtyAABB: 0
+--- !u!136 &156938743046689763
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626344279}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.32480866
+  m_Height: 1.0693607
+  m_Direction: 2
+  m_Center: {x: -0.0067054057, y: 0.01124059, z: 0.4948181}
 --- !u!1 &5423296801626346211
 GameObject:
   m_ObjectHideFlags: 0
@@ -3023,9 +3357,10 @@ GameObject:
   - component: {fileID: 5423296801626644739}
   - component: {fileID: 5423296801623135909}
   - component: {fileID: 5423296801624217127}
+  - component: {fileID: 5843600667242297532}
   m_Layer: 0
   m_Name: Z_head_14_punk
-  m_TagString: Untagged
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3095,6 +3430,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &5843600667242297532
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626346211}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.33830816
+  m_Center: {x: 0.00046730624, y: 0.020339817, z: 0.068211384}
 --- !u!1 &5423296801626346637
 GameObject:
   m_ObjectHideFlags: 0
@@ -3105,9 +3453,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5423296801626632189}
   - component: {fileID: 5423296801629321901}
+  - component: {fileID: 8565853546389562721}
   m_Layer: 0
   m_Name: Body_14_RiotPolice
-  m_TagString: Untagged
+  m_TagString: Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3195,6 +3544,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.07043731, y: 0.0006784797, z: 0.00000008940697}
     m_Extent: {x: 0.5246882, y: 0.26552975, z: 0.75921917}
   m_DirtyAABB: 0
+--- !u!136 &8565853546389562721
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626346637}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.32480866
+  m_Height: 1.0693607
+  m_Direction: 2
+  m_Center: {x: -0.0067054057, y: 0.01124059, z: 0.4948181}
 --- !u!1 &5423296801626348517
 GameObject:
   m_ObjectHideFlags: 0
@@ -3206,9 +3569,10 @@ GameObject:
   - component: {fileID: 5423296801626599657}
   - component: {fileID: 5423296801623163173}
   - component: {fileID: 5423296801624410455}
+  - component: {fileID: 6051846593638710351}
   m_Layer: 0
   m_Name: Z_head_21_soldier
-  m_TagString: Untagged
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3278,6 +3642,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &6051846593638710351
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626348517}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.33830816
+  m_Center: {x: 0.00046730624, y: 0.020339817, z: 0.068211384}
 --- !u!1 &5423296801626348817
 GameObject:
   m_ObjectHideFlags: 0
@@ -3341,9 +3718,10 @@ GameObject:
   - component: {fileID: 5423296801626635603}
   - component: {fileID: 5423296801623118501}
   - component: {fileID: 5423296801624217943}
+  - component: {fileID: 3929584715316322816}
   m_Layer: 0
   m_Name: Z_head_04
-  m_TagString: Untagged
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3413,6 +3791,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &3929584715316322816
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626349969}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.33830816
+  m_Center: {x: 0.00046730624, y: 0.020339817, z: 0.068211384}
 --- !u!1 &5423296801626350681
 GameObject:
   m_ObjectHideFlags: 0
@@ -3486,14 +3877,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5423296801626592927}
   - component: {fileID: 5423296801633513963}
-  - component: {fileID: 6059280069871570440}
-  - component: {fileID: 6308771045107770561}
   - component: {fileID: 5423296801633513964}
   - component: {fileID: 5423296801633513967}
   - component: {fileID: 298571632222741312}
   m_Layer: 0
   m_Name: Enemy_Zombie_1
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3535,40 +3924,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!143 &6059280069871570440
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5423296801626352521}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 1.58
-  m_Radius: 0.28
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.76, z: 0}
---- !u!54 &6308771045107770561
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5423296801626352521}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!195 &5423296801633513964
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3579,8 +3934,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.28
-  m_Speed: 3
-  m_Acceleration: 6
+  m_Speed: 1.5
+  m_Acceleration: 3
   avoidancePriority: 4
   m_AngularSpeed: 150
   m_StoppingDistance: 0.5
@@ -3748,9 +4103,10 @@ GameObject:
   - component: {fileID: 5423296801626575483}
   - component: {fileID: 5423296801623194753}
   - component: {fileID: 5423296801624165877}
+  - component: {fileID: 1888984967979365473}
   m_Layer: 0
   m_Name: Z_head_08_cap
-  m_TagString: Untagged
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3820,6 +4176,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &1888984967979365473
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626354633}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.33830816
+  m_Center: {x: 0.00046730624, y: 0.020339817, z: 0.068211384}
 --- !u!1 &5423296801626355207
 GameObject:
   m_ObjectHideFlags: 0
@@ -3831,9 +4200,10 @@ GameObject:
   - component: {fileID: 5423296801626594597}
   - component: {fileID: 5423296801623219969}
   - component: {fileID: 5423296801624226761}
+  - component: {fileID: 2218257638694784938}
   m_Layer: 0
   m_Name: Z_head_07_cap
-  m_TagString: Untagged
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3903,6 +4273,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &2218257638694784938
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626355207}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.33830816
+  m_Center: {x: 0.00046730624, y: 0.020339817, z: 0.068211384}
 --- !u!1 &5423296801626358121
 GameObject:
   m_ObjectHideFlags: 0
@@ -3977,9 +4360,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5423296801626590687}
   - component: {fileID: 5423296801629331041}
+  - component: {fileID: 3198947996426805313}
   m_Layer: 0
   m_Name: Body_16_punk_B
-  m_TagString: Untagged
+  m_TagString: Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4067,6 +4451,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.07043731, y: 0.02187974, z: 0.00000008940697}
     m_Extent: {x: 0.5246882, y: 0.2443285, z: 0.75921917}
   m_DirtyAABB: 0
+--- !u!136 &3198947996426805313
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626360579}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.32480866
+  m_Height: 1.0693607
+  m_Direction: 2
+  m_Center: {x: -0.0067054057, y: 0.01124059, z: 0.4948181}
 --- !u!1 &5423296801626360857
 GameObject:
   m_ObjectHideFlags: 0
@@ -4077,9 +4475,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5423296801626636051}
   - component: {fileID: 5423296801629477023}
+  - component: {fileID: 317381722932409475}
   m_Layer: 0
   m_Name: Body_17_doctor
-  m_TagString: Untagged
+  m_TagString: Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4167,6 +4566,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.07043731, y: 0.02187974, z: 0.00000008940697}
     m_Extent: {x: 0.5246882, y: 0.2443285, z: 0.75921917}
   m_DirtyAABB: 0
+--- !u!136 &317381722932409475
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626360857}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.32480866
+  m_Height: 1.0693607
+  m_Direction: 2
+  m_Center: {x: -0.0067054057, y: 0.01124059, z: 0.4948181}
 --- !u!1 &5423296801626362603
 GameObject:
   m_ObjectHideFlags: 0
@@ -4178,9 +4591,10 @@ GameObject:
   - component: {fileID: 5423296801626618513}
   - component: {fileID: 5423296801623166201}
   - component: {fileID: 5423296801624369961}
+  - component: {fileID: 1560196140147223248}
   m_Layer: 0
   m_Name: Z_head_03
-  m_TagString: Untagged
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4250,6 +4664,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &1560196140147223248
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626362603}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.33830816
+  m_Center: {x: 0.00046730624, y: 0.020339817, z: 0.068211384}
 --- !u!1 &5423296801626363161
 GameObject:
   m_ObjectHideFlags: 0
@@ -4325,9 +4752,10 @@ GameObject:
   - component: {fileID: 5423296801626607907}
   - component: {fileID: 5423296801623114489}
   - component: {fileID: 5423296801624218717}
+  - component: {fileID: 3300914151013004077}
   m_Layer: 0
   m_Name: Z_head_06
-  m_TagString: Untagged
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4397,6 +4825,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &3300914151013004077
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626364307}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.33830816
+  m_Center: {x: 0.00046730624, y: 0.020339817, z: 0.068211384}
 --- !u!1 &5423296801626364457
 GameObject:
   m_ObjectHideFlags: 0
@@ -4556,9 +4997,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5423296801626573991}
   - component: {fileID: 5423296801629489571}
+  - component: {fileID: 4928543565218685798}
   m_Layer: 0
   m_Name: Body_07_greysuit
-  m_TagString: Untagged
+  m_TagString: Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4646,6 +5088,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.07043731, y: 0.02187974, z: 0.00000008940697}
     m_Extent: {x: 0.5246882, y: 0.2443285, z: 0.75921917}
   m_DirtyAABB: 0
+--- !u!136 &4928543565218685798
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626365715}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.32480866
+  m_Height: 1.0693607
+  m_Direction: 2
+  m_Center: {x: -0.0067054057, y: 0.01124059, z: 0.4948181}
 --- !u!1 &5423296801626367267
 GameObject:
   m_ObjectHideFlags: 0
@@ -4656,9 +5112,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5423296801626524331}
   - component: {fileID: 5423296801629313037}
+  - component: {fileID: 7249847212388215861}
   m_Layer: 0
   m_Name: Body_15_punk_A
-  m_TagString: Untagged
+  m_TagString: Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4746,6 +5203,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.07043731, y: 0.02187974, z: 0.00000008940697}
     m_Extent: {x: 0.5246882, y: 0.2443285, z: 0.75921917}
   m_DirtyAABB: 0
+--- !u!136 &7249847212388215861
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626367267}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.32480866
+  m_Height: 1.0693607
+  m_Direction: 2
+  m_Center: {x: -0.0067054057, y: 0.01124059, z: 0.4948181}
 --- !u!1 &5423296801626367669
 GameObject:
   m_ObjectHideFlags: 0
@@ -4756,13 +5227,14 @@ GameObject:
   m_Component:
   - component: {fileID: 5423296801626651633}
   - component: {fileID: 5423296801629327497}
+  - component: {fileID: 8751821596081095691}
   m_Layer: 0
   m_Name: Body_12_police_A
-  m_TagString: Untagged
+  m_TagString: Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5423296801626651633
 Transform:
   m_ObjectHideFlags: 0
@@ -4846,6 +5318,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.07043731, y: 0.02187974, z: 0.00000008940697}
     m_Extent: {x: 0.5246882, y: 0.2443285, z: 0.75921917}
   m_DirtyAABB: 0
+--- !u!136 &8751821596081095691
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626367669}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.32480866
+  m_Height: 1.0693607
+  m_Direction: 2
+  m_Center: {x: -0.0067054057, y: 0.01124059, z: 0.4948181}
 --- !u!1 &5423296801626368383
 GameObject:
   m_ObjectHideFlags: 0
@@ -4856,13 +5342,14 @@ GameObject:
   m_Component:
   - component: {fileID: 5423296801626599655}
   - component: {fileID: 5423296801629521185}
+  - component: {fileID: 5172308633484858490}
   m_Layer: 0
   m_Name: Body_08_robust
-  m_TagString: Untagged
+  m_TagString: Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5423296801626599655
 Transform:
   m_ObjectHideFlags: 0
@@ -4946,6 +5433,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.06254876, y: 0.024880677, z: 0.00000017881393}
     m_Extent: {x: 0.5167996, y: 0.27444458, z: 0.7707153}
   m_DirtyAABB: 0
+--- !u!136 &5172308633484858490
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626368383}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.32480866
+  m_Height: 1.0693607
+  m_Direction: 2
+  m_Center: {x: -0.0067054057, y: 0.01124059, z: 0.4948181}
 --- !u!1 &5423296801626371829
 GameObject:
   m_ObjectHideFlags: 0
@@ -4956,9 +5457,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5423296801626573489}
   - component: {fileID: 5423296801629297829}
+  - component: {fileID: 4418232899976099641}
   m_Layer: 0
   m_Name: Body_20_priest
-  m_TagString: Untagged
+  m_TagString: Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5046,6 +5548,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.07043731, y: 0.02187974, z: 0.00000008940697}
     m_Extent: {x: 0.5246882, y: 0.2443285, z: 0.75921917}
   m_DirtyAABB: 0
+--- !u!136 &4418232899976099641
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626371829}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.32480866
+  m_Height: 1.0693607
+  m_Direction: 2
+  m_Center: {x: -0.0067054057, y: 0.01124059, z: 0.4948181}
 --- !u!1 &5423296801626374301
 GameObject:
   m_ObjectHideFlags: 0
@@ -5056,9 +5572,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5423296801626609493}
   - component: {fileID: 5423296801629298607}
+  - component: {fileID: 3895625667086225269}
   m_Layer: 0
   m_Name: Body_03_whiteTshirt
-  m_TagString: Untagged
+  m_TagString: Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5146,6 +5663,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.07043731, y: 0.02187974, z: 0.00000008940697}
     m_Extent: {x: 0.5246882, y: 0.2443285, z: 0.75921917}
   m_DirtyAABB: 0
+--- !u!136 &3895625667086225269
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626374301}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.32480866
+  m_Height: 1.0693607
+  m_Direction: 2
+  m_Center: {x: -0.0067054057, y: 0.01124059, z: 0.4948181}
 --- !u!1 &5423296801626378325
 GameObject:
   m_ObjectHideFlags: 0
@@ -5157,9 +5688,10 @@ GameObject:
   - component: {fileID: 5423296801626648245}
   - component: {fileID: 5423296801623233469}
   - component: {fileID: 5423296801624207643}
+  - component: {fileID: 6961362881078615455}
   m_Layer: 0
   m_Name: Z_head_16_punk
-  m_TagString: Untagged
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5229,6 +5761,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &6961362881078615455
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626378325}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.33830816
+  m_Center: {x: 0.00046730624, y: 0.020339817, z: 0.068211384}
 --- !u!1 &5423296801626379775
 GameObject:
   m_ObjectHideFlags: 0
@@ -5306,9 +5851,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5423296801626522135}
   - component: {fileID: 5423296801629327261}
+  - component: {fileID: 8287304770370785184}
   m_Layer: 0
   m_Name: Body_09_no-arm
-  m_TagString: Untagged
+  m_TagString: Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5396,6 +5942,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.07043281, y: 0.027514294, z: -0.06278911}
     m_Extent: {x: 0.5246837, y: 0.23869394, z: 0.7021688}
   m_DirtyAABB: 0
+--- !u!136 &8287304770370785184
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626384065}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.32480866
+  m_Height: 1.0693607
+  m_Direction: 2
+  m_Center: {x: -0.0067054057, y: 0.01124059, z: 0.4948181}
 --- !u!1 &5423296801626384317
 GameObject:
   m_ObjectHideFlags: 0
@@ -5439,13 +5999,14 @@ GameObject:
   - component: {fileID: 5423296801626618145}
   - component: {fileID: 5423296801623170617}
   - component: {fileID: 5423296801624207761}
+  - component: {fileID: 2441075047895376045}
   m_Layer: 0
   m_Name: Z_head_17_police
-  m_TagString: Untagged
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5423296801626618145
 Transform:
   m_ObjectHideFlags: 0
@@ -5511,6 +6072,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &2441075047895376045
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626386313}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.33830816
+  m_Center: {x: 0.00046730624, y: 0.020339817, z: 0.068211384}
 --- !u!1 &5423296801626387949
 GameObject:
   m_ObjectHideFlags: 0
@@ -5522,9 +6096,10 @@ GameObject:
   - component: {fileID: 5423296801626632521}
   - component: {fileID: 5423296801623229293}
   - component: {fileID: 5423296801624205907}
+  - component: {fileID: 6185738232783896115}
   m_Layer: 0
   m_Name: Z_head_20_butcher
-  m_TagString: Untagged
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5594,6 +6169,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &6185738232783896115
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423296801626387949}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.33830816
+  m_Center: {x: 0.00046730624, y: 0.020339817, z: 0.068211384}
 --- !u!1 &5423296801626389237
 GameObject:
   m_ObjectHideFlags: 0
@@ -5634,6 +6222,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6017637900384616913}
+  - component: {fileID: 6642220828350512468}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -5679,3 +6268,60 @@ Transform:
   m_Father: {fileID: 5423296801626592927}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6642220828350512468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6017637900384616912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f0af6824c20e542a851a38363e795b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _heads:
+  - {fileID: 5423296801626176305}
+  - {fileID: 5423296801626332615}
+  - {fileID: 5423296801626362603}
+  - {fileID: 5423296801626349969}
+  - {fileID: 5423296801626168955}
+  - {fileID: 5423296801626364307}
+  - {fileID: 5423296801626355207}
+  - {fileID: 5423296801626354633}
+  - {fileID: 5423296801626178791}
+  - {fileID: 5423296801626176919}
+  - {fileID: 5423296801626185273}
+  - {fileID: 5423296801626338735}
+  - {fileID: 5423296801626339601}
+  - {fileID: 5423296801626346211}
+  - {fileID: 5423296801626334753}
+  - {fileID: 5423296801626378325}
+  - {fileID: 5423296801626386313}
+  - {fileID: 5423296801626278195}
+  - {fileID: 5423296801626165789}
+  - {fileID: 5423296801626387949}
+  - {fileID: 5423296801626348517}
+  _bodies:
+  - {fileID: 5423296801626336861}
+  - {fileID: 5423296801626167735}
+  - {fileID: 5423296801626278219}
+  - {fileID: 5423296801626374301}
+  - {fileID: 5423296801626328609}
+  - {fileID: 5423296801626344279}
+  - {fileID: 5423296801626173119}
+  - {fileID: 5423296801626365715}
+  - {fileID: 5423296801626368383}
+  - {fileID: 5423296801626384065}
+  - {fileID: 5423296801626339443}
+  - {fileID: 5423296801626184291}
+  - {fileID: 5423296801626367669}
+  - {fileID: 5423296801626334165}
+  - {fileID: 5423296801626346637}
+  - {fileID: 5423296801626367267}
+  - {fileID: 5423296801626360579}
+  - {fileID: 5423296801626360857}
+  - {fileID: 5423296801626191437}
+  - {fileID: 5423296801626184001}
+  - {fileID: 5423296801626371829}
+  - {fileID: 5423296801626328201}

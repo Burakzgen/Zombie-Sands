@@ -15,8 +15,8 @@ public class GameManager : MonoBehaviour
     [Header("OTHERS CONTROLS")]
 
     [SerializeField] private CameraManager _cameraManager;
-    [SerializeField] private GameObject _gameOverPanelObject; 
-    [SerializeField] private GameObject _winPanelObject; 
+    [SerializeField] private GameObject _gameOverPanelObject;
+    [SerializeField] private GameObject _winPanelObject;
     [SerializeField] private TextMeshProUGUI _remainingEnemyText;
     [SerializeField] private TextMeshProUGUI _totalEnemyText;
 
@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform[] _enemySpawnPoints;
     [SerializeField] private Transform _targetPoint;
     [SerializeField] private int _totalEnemyCount;
+    [SerializeField] private int _targetEnemyCount;
 
     [Header("HEALTH CONTROLS")]
     float _health;
@@ -60,9 +61,9 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         //Enemy Count
-        reamingEnemyCount = _totalEnemyCount;
-        _totalEnemyText.text = reamingEnemyCount.ToString();
-        _remainingEnemyText.text = _totalEnemyCount.ToString();
+        reamingEnemyCount = 0;
+        _totalEnemyText.text = _targetEnemyCount.ToString();
+        _remainingEnemyText.text = reamingEnemyCount.ToString();
 
         _health = 100;
         _healthBar.fillAmount = 1f;
@@ -74,8 +75,8 @@ public class GameManager : MonoBehaviour
     }
     public void UpdateEnemyCount()
     {
-        reamingEnemyCount--;
-        if (reamingEnemyCount<=0)
+        reamingEnemyCount++;
+        if (reamingEnemyCount >= _targetEnemyCount)
         {
             // WIN
             //TODO: Oyun durdurma iþlemi yapýlacak. Delay eklenebilri
@@ -106,7 +107,7 @@ public class GameManager : MonoBehaviour
     public void TakeDamage(float damage)
     {
         _health -= damage;
-        if (_health < 0)
+        if (_health <= 0)
         {
             _healthBar.fillAmount = 0;
             GameOver();

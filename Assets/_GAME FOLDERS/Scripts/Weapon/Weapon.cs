@@ -159,12 +159,17 @@ public class Weapon : MonoBehaviour
         {
             //TODO: Object pooling kullnarak objeleri oluþturma yapýlmalý.
 
-            if (hit.transform.CompareTag("Enemy"))
+            if (hit.transform.gameObject.CompareTag("Head"))
             {
-                hit.transform.gameObject.GetComponent<EnemyController>().TakeDamage(damage);
+                hit.transform.GetComponentInParent<EnemyController>().TakeDamage(damage * 2);
                 Instantiate(_bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
             }
-            else if (hit.transform.CompareTag("OverEnemy"))
+            else if (hit.transform.gameObject.CompareTag("Body"))
+            {
+                hit.transform.GetComponentInParent<EnemyController>().TakeDamage(damage);
+                Instantiate(_bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            }
+            else if (hit.transform.CompareTag("OverEnemy")) // Duruma gore ilave yapilabilir
             {
                 hit.transform.gameObject.GetComponent<EnemyController>().TakeDamage(damage);
                 Rigidbody rg = hit.transform.gameObject.GetComponent<Rigidbody>();
@@ -189,7 +194,7 @@ public class Weapon : MonoBehaviour
 
         if (isCameraShake)
         {
-            _cam.DOShakePosition(0.2f, 0.05f, 3,90,true);
+            _cam.DOShakePosition(0.2f, 0.05f, 3, 90, true);
         }
 
         _fireSound.Play();

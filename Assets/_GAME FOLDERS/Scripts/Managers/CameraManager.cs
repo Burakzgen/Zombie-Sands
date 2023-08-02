@@ -7,6 +7,7 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private Transform _targetPosition;
     [SerializeField] private Transform _startCamPosition;
     [SerializeField] private GameObject _crosshair;
+    [SerializeField] private GameObject _scope;
     private void Start()
     {
         StartCamPosition();
@@ -22,6 +23,7 @@ public class CameraManager : MonoBehaviour
     public void EndGameCamEffect()
     {
         _camera.gameObject.SetActive(true);
+        _scope.gameObject.SetActive(false);
         _crosshair.gameObject.SetActive(false);
         GameManager.IsGameActive = false;
         _camera.transform.DOMove(_startCamPosition.position, 2.0f);
