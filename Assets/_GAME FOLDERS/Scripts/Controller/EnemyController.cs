@@ -15,10 +15,12 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float _health;
     [SerializeField] private float _damage;
     [SerializeField] private string[] _randomWalkAnimation;
-
+    [Header("ENEMY SETTINGS")]
+    [SerializeField] private GameObject[] _heads;
+    [SerializeField] private GameObject[] _bodies;
+    int randomBodyNumber;
+    int randomHeadNumber;
     [Header("DISSOLVE CONTROLS")]
-    [SerializeField] private SkinnedMeshRenderer _skinnedMesh;
-    [SerializeField] private MeshRenderer _headMesh;
     private Material _dissolveBodyMaterial;
     private Material _dissolveHeadMaterial;
     [SerializeField] private float DissolveRate = 0.0125f;
@@ -28,16 +30,18 @@ public class EnemyController : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         _myAnimator = GetComponent<Animator>();
 
+        randomHeadNumber = Random.Range(0, _heads.Length);
+        randomBodyNumber = Random.Range(0, _bodies.Length);
+
         int index = Random.Range(0, _randomWalkAnimation.Length);
         _myAnimator.Play(_randomWalkAnimation[index]);
 
         _gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         //_isDead = false;
+        RandomPlayer();
+        _dissolveBodyMaterial = _bodies[randomBodyNumber].GetComponent<SkinnedMeshRenderer>().material;
+        _dissolveHeadMaterial = _heads[randomHeadNumber].GetComponent<MeshRenderer>().material;
 
-        if (_skinnedMesh != null)
-            _dissolveBodyMaterial = _skinnedMesh.material;
-        if (_headMesh != null)
-            _dissolveHeadMaterial = _headMesh.material;
         if (_target != null)
             _agent.SetDestination(_target.transform.position);
     }
@@ -59,7 +63,7 @@ public class EnemyController : MonoBehaviour
         _health -= damage;
         if (_health <= 0)
         {
-            if (damage>=100)
+            if (damage >= 100)
                 Dead("Head_Shot");
             else
                 Dead("Normal_Shot_Dead");
@@ -87,6 +91,20 @@ public class EnemyController : MonoBehaviour
         }
 
 
+    }
+    private void RandomPlayer()
+    {
+        for (int i = 0; i < _heads.Length; i++)
+        {
+            _heads[i].gameObject.SetActive(false);
+        }
+
+        for (int i = 0; i < _bodies.Length; i++)
+        {
+            _bodies[i].gameObject.SetActive(false);
+        }
+        _heads[randomHeadNumber].gameObject.SetActive(true);
+        _bodies[randomBodyNumber].gameObject.SetActive(true);
     }
 
 }

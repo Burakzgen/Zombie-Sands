@@ -4700,7 +4700,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7199380912065560811}
-  - component: {fileID: 2241484872935889463}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -4724,50 +4723,6 @@ Transform:
   m_Father: {fileID: 7199380913116654641}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2241484872935889463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7199380912065560804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3f0af6824c20e542a851a38363e795b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _heads:
-  - {fileID: 5945821316091031143}
-  - {fileID: 5945821316091110701}
-  - {fileID: 5945821316091048497}
-  - {fileID: 5945821316091020975}
-  - {fileID: 5945821316091057355}
-  - {fileID: 5945821316091056177}
-  - {fileID: 5945821316091078691}
-  - {fileID: 5945821316091051039}
-  - {fileID: 5945821316091071489}
-  - {fileID: 5945821316091024585}
-  - {fileID: 5945821316091111579}
-  - {fileID: 5945821316091063807}
-  - {fileID: 5945821316091111447}
-  - {fileID: 5945821316091053881}
-  _bodies:
-  - {fileID: 5945821316091042751}
-  - {fileID: 5945821316091033827}
-  - {fileID: 5945821316091031145}
-  - {fileID: 5945821316091027483}
-  - {fileID: 5945821316091069073}
-  - {fileID: 5945821316091071437}
-  - {fileID: 5945821316091045827}
-  - {fileID: 5945821316091077495}
-  - {fileID: 5945821316091113891}
-  - {fileID: 5945821316091031367}
-  - {fileID: 5945821316091060179}
-  - {fileID: 5945821316091042375}
-  - {fileID: 5945821316091091815}
-  - {fileID: 5945821316091083499}
-  - {fileID: 5945821316091053907}
-  - {fileID: 5945821316091048995}
 --- !u!1 &7199380913116654642
 GameObject:
   m_ObjectHideFlags: 0
@@ -4867,8 +4822,38 @@ MonoBehaviour:
   - Dumb_Walk_1
   - Dumb_Walk_2
   - Dumb_Walk_3
-  _skinnedMesh: {fileID: 5945821316088003973}
-  _headMesh: {fileID: 5945821316093057997}
+  _heads:
+  - {fileID: 5945821316091031143}
+  - {fileID: 5945821316091110701}
+  - {fileID: 5945821316091048497}
+  - {fileID: 5945821316091020975}
+  - {fileID: 5945821316091057355}
+  - {fileID: 5945821316091056177}
+  - {fileID: 5945821316091078691}
+  - {fileID: 5945821316091051039}
+  - {fileID: 5945821316091071489}
+  - {fileID: 5945821316091024585}
+  - {fileID: 5945821316091111579}
+  - {fileID: 5945821316091063807}
+  - {fileID: 5945821316091111447}
+  - {fileID: 5945821316091053881}
+  _bodies:
+  - {fileID: 5945821316091042751}
+  - {fileID: 5945821316091033827}
+  - {fileID: 5945821316091031145}
+  - {fileID: 5945821316091027483}
+  - {fileID: 5945821316091069073}
+  - {fileID: 5945821316091071437}
+  - {fileID: 5945821316091045827}
+  - {fileID: 5945821316091077495}
+  - {fileID: 5945821316091113891}
+  - {fileID: 5945821316091031367}
+  - {fileID: 5945821316091060179}
+  - {fileID: 5945821316091042375}
+  - {fileID: 5945821316091091815}
+  - {fileID: 5945821316091083499}
+  - {fileID: 5945821316091053907}
+  - {fileID: 5945821316091048995}
   DissolveRate: 0.0125
   RefleshRate: 0.065
 --- !u!82 &-7140257818108137179
