@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,8 +20,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _gameOverPanelObject;
     [SerializeField] private GameObject _winPanelObject;
     [SerializeField] private GameObject _pausePanel;
+    [SerializeField] private Image _damageEffectImage;
     [SerializeField] private TextMeshProUGUI _currentEnemyText;
     [SerializeField] private TextMeshProUGUI _totalEnemyText;
+
     [Header("WEAPON CONTROLS")]
     [SerializeField] private GameObject[] _weaponsObject;
 
@@ -133,8 +136,13 @@ public class GameManager : MonoBehaviour
         else
         {
             _healthBar.fillAmount -= damage / 100;
+            DamageEffect();
         }
 
+    }
+    private void DamageEffect()
+    {
+        _damageEffectImage.DOFade(0.65f, 0.5f).SetLoops(2, LoopType.Yoyo);
     }
     private void GameOver()
     {

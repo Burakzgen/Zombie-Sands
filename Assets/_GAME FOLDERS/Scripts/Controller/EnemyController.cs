@@ -50,7 +50,7 @@ public class EnemyController : MonoBehaviour
         if (other.gameObject.CompareTag("Home"))
         {
             _gameManager.TakeDamage(_damage);
-            gameObject.GetComponent<CharacterController>().enabled = false;
+            //gameObject.GetComponent<CharacterController>().enabled = false;
             //Destroy(gameObject, 0.5f);
             ObjectPoolManager.ReturnObjectToPool(gameObject);
         }
