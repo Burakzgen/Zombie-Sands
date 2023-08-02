@@ -4,11 +4,11 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.AI;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
     //STATIC
-    public static GameManager Instance { get; private set; }
     public bool IsGameActive;
     public int currentEnemyCount;
     //PRIVATE
@@ -16,10 +16,11 @@ public class GameManager : MonoBehaviour
     //PUBLIC
     [Header("OTHERS CONTROLS")]
 
-    [SerializeField] private CameraManager _cameraManager;
+    [SerializeField] private TransitionCameraManager _cameraManager;
     [SerializeField] private GameObject _gameOverPanelObject;
     [SerializeField] private GameObject _winPanelObject;
     [SerializeField] private GameObject _pausePanel;
+    [SerializeField] private GameObject _gameWindowPanel;
     [SerializeField] private Image _damageEffectImage;
     [SerializeField] private TextMeshProUGUI _currentEnemyText;
     [SerializeField] private TextMeshProUGUI _totalEnemyText;
@@ -38,16 +39,6 @@ public class GameManager : MonoBehaviour
     float _health;
     [SerializeField] private Image _healthBar;
 
-    private void Awake()
-    {
-        if (Instance != null)
-        {
-            Destroy(this);
-        }
-        else
-            Instance = this;
-
-    }
     void Start()
     {
         InitialSettings();
@@ -101,7 +92,10 @@ public class GameManager : MonoBehaviour
         {
             // WIN
             //TODO: Oyun durdurma iþlemi yapýlacak. Delay eklenebilri
-            Win();
+            StartCoroutine(HelperMethods.DoAfterDelay(() =>
+            {
+                Win();
+            }, 1f));
         }
         else
             _currentEnemyText.text = currentEnemyCount.ToString();
@@ -115,11 +109,18 @@ public class GameManager : MonoBehaviour
 
             if (_totalEnemyCount != 0)
             {
-                int enemy = Random.Range(0, _enemies.Length);
                 int spawnPoints = Random.Range(0, _enemySpawnPoints.Length);
+                GameObject chosenZombie;
+                float randomWeight = Random.Range(0f, 1f);
 
-                GameObject obj = ObjectPoolManager.SpawnObject(_enemies[enemy], _enemySpawnPoints[spawnPoints].transform.position, Quaternion.identity, ObjectPoolManager.PoolType.Enemy);
-                obj.GetComponent<EnemyController>().SetTarget(_targetPoint);
+                if (randomWeight < 0.5f) // %50 olasýlýk
+                    chosenZombie = ObjectPoolManager.Instance.SpawnFromPool("Basic_Zombie", _enemySpawnPoints[spawnPoints].transform.position, Quaternion.identity);
+                else if (randomWeight < 0.8f) // %30 olasýlýk
+                    chosenZombie = ObjectPoolManager.Instance.SpawnFromPool("Normal_Zombie", _enemySpawnPoints[spawnPoints].transform.position, Quaternion.identity);
+                else // %20 olasýlýk
+                    chosenZombie = ObjectPoolManager.Instance.SpawnFromPool("Hard_Zombie", _enemySpawnPoints[spawnPoints].transform.position, Quaternion.identity);
+
+                chosenZombie.GetComponent<EnemyController>().SetTarget(_targetPoint);
                 _totalEnemyCount--;
             }
 
@@ -149,6 +150,8 @@ public class GameManager : MonoBehaviour
         //TODO: TimeScale yerine alternatif bir yol yapýlmalý.
         IsGameActive = false;
         StopAllCoroutines();
+        _gameWindowPanel.SetActive(false);
+        EnemyDeath();
         Cursor.lockState = CursorLockMode.None;
         //Time.timeScale = 0;
         _cameraManager.EndGameCamEffect();
@@ -159,6 +162,8 @@ public class GameManager : MonoBehaviour
         //TODO: TimeScale yerine alternatif bir yol yapýlmalý.
         IsGameActive = false;
         StopAllCoroutines();
+        _gameWindowPanel.SetActive(false);
+        EnemyDeath();
         Cursor.lockState = CursorLockMode.None;
         //Time.timeScale = 0;
         _cameraManager.EndGameCamEffect();
@@ -174,6 +179,14 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         _pausePanel.SetActive(false);
+    }
+    private void EnemyDeath()
+    {
+        NavMeshAgent[] enemies = GameObject.FindObjectsOfType<NavMeshAgent>();
+        foreach (var item in enemies)
+        {
+            item.enabled = false;
+        }
     }
     private void ChangeWeapon(int newWeaponIndex)
     {

@@ -9243,4 +9243,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d149dc191679514468b44b799430cab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lifeTime: 1
+  _particalTag: BloodEffect

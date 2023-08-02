@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3815741077692865879}
   - component: {fileID: 3815741077692865878}
   - component: {fileID: -548403231241409981}
-  - component: {fileID: 4869941609139534128}
   m_Layer: 0
   m_Name: Enemy_Zombie_3
   m_TagString: Untagged
@@ -145,6 +144,7 @@ MonoBehaviour:
   - {fileID: 6121257698509550127}
   - {fileID: 6121257698509547795}
   - {fileID: 6121257698509584571}
+  _poolTag: Normal_Zombie
   DissolveRate: 0.0125
   RefleshRate: 0.07
 --- !u!82 &-548403231241409981
@@ -243,22 +243,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!54 &4869941609139534128
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3815741077692865875}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &3815741078421083901
 GameObject:
   m_ObjectHideFlags: 0
