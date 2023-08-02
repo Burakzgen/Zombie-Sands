@@ -15,7 +15,7 @@ public class CameraController : MonoBehaviour
   
     void Update()
     {
-        if (!GameManager.IsGameActive)
+        if (!GameManager.Instance.IsGameActive)
             return;
 
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;

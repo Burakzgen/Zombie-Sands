@@ -7,8 +7,9 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     //STATIC
-    public static bool IsGameActive;
-    public static int currentEnemyCount;
+    public static GameManager Instance { get; private set; }
+    public bool IsGameActive;
+    public int currentEnemyCount;
     //PRIVATE
     int _currentWeaponIndex;
     //PUBLIC
@@ -17,9 +18,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CameraManager _cameraManager;
     [SerializeField] private GameObject _gameOverPanelObject;
     [SerializeField] private GameObject _winPanelObject;
+    [SerializeField] private GameObject _pausePanel;
     [SerializeField] private TextMeshProUGUI _currentEnemyText;
     [SerializeField] private TextMeshProUGUI _totalEnemyText;
-
     [Header("WEAPON CONTROLS")]
     [SerializeField] private GameObject[] _weaponsObject;
 
@@ -34,6 +35,16 @@ public class GameManager : MonoBehaviour
     float _health;
     [SerializeField] private Image _healthBar;
 
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(this);
+        }
+        else
+            Instance = this;
+
+    }
     void Start()
     {
         InitialSettings();
@@ -53,6 +64,13 @@ public class GameManager : MonoBehaviour
                 }
             }
 
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (Time.timeScale != 0)
+                Pause();
+            else
+                ResumeGame();
         }
     }
     private void InitialSettings()
@@ -138,6 +156,16 @@ public class GameManager : MonoBehaviour
         _cameraManager.EndGameCamEffect();
         _winPanelObject.SetActive(true);
         _currentEnemyText.text = 0.ToString();
+    }
+    private void Pause()
+    {
+        Time.timeScale = 0;
+        _pausePanel.SetActive(true);
+    }
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+        _pausePanel.SetActive(false);
     }
     private void ChangeWeapon(int newWeaponIndex)
     {

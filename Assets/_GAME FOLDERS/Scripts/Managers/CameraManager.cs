@@ -25,13 +25,13 @@ public class CameraManager : MonoBehaviour
         _camera.gameObject.SetActive(true);
         _scope.gameObject.SetActive(false);
         _crosshair.gameObject.SetActive(false);
-        GameManager.IsGameActive = false;
+        GameManager.Instance.IsGameActive = false;
         _camera.transform.DOMove(_startCamPosition.position, 2.0f);
     }
     private void StartGameDelay()
     {
         _camera.gameObject.SetActive(false);
-        GameManager.IsGameActive = true;
+        GameManager.Instance.IsGameActive = true;
         _crosshair.gameObject.SetActive(true);
     }
 }

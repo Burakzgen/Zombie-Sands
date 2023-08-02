@@ -66,7 +66,7 @@ public class Weapon : MonoBehaviour
     }
     private void Update()
     {
-        if (!GameManager.IsGameActive)
+        if (!GameManager.Instance.IsGameActive)
             return;
 
         // Mermi atis
