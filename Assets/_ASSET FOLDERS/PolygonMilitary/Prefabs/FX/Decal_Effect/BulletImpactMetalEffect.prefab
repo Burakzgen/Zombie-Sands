@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4000011450163336}
   - component: {fileID: 198000013440722320}
   - component: {fileID: 199000011528143168}
-  - component: {fileID: 114672108705133496}
+  - component: {fileID: 4602411405123477112}
   m_Layer: 0
   m_Name: BulletImpactMetalEffect
   m_TagString: Untagged
@@ -4670,7 +4670,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &114672108705133496
+--- !u!114 &4602411405123477112
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4682,7 +4682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3cedb949dfc6b44aa88e1e82ba6471d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 4
+  lifeTime: 3
 --- !u!1 &1000013173155048
 GameObject:
   m_ObjectHideFlags: 0

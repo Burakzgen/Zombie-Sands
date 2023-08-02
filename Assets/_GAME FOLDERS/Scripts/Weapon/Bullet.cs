@@ -8,14 +8,28 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.velocity = transform.forward * 250;
-        Destroy(gameObject, 2f);
+
+        rb.velocity = transform.forward * 3;
+        rb.rotation = Quaternion.identity;
+        StartCoroutine(ReturnToPoolAfterTime(2f));
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
+        //ObjectPoolManager.ReturnObjectToPool(gameObject);
+        ObjectPoolManager.ReturnObjectToPool(gameObject);
+    }
+
+    IEnumerator ReturnToPoolAfterTime(float _delayTime)
+    {
+        float elapsedTime = 0f;
+        while (elapsedTime < _delayTime)
+        {
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        ObjectPoolManager.ReturnObjectToPool(gameObject);
     }
 
 }

@@ -51,7 +51,8 @@ public class EnemyController : MonoBehaviour
         {
             _gameManager.TakeDamage(_damage);
             gameObject.GetComponent<CharacterController>().enabled = false;
-            Destroy(gameObject, 0.5f);
+            //Destroy(gameObject, 0.5f);
+            ObjectPoolManager.ReturnObjectToPool(gameObject);
         }
     }
     public void SetTarget(Transform target)
@@ -76,8 +77,19 @@ public class EnemyController : MonoBehaviour
         _myAnimator.Play(deadStyle);
         StartCoroutine(DissolveCoroutine());
         _agent.enabled = false;
-        //TODO: Object pooling kontrolune göre ayarlanacak.
-        Destroy(gameObject, 5f);
+
+        StartCoroutine(ReturnToPoolAfterTime());
+        //Destroy(gameObject, 5f);
+    }
+    IEnumerator ReturnToPoolAfterTime()
+    {
+        float elapsedTime = 0f;
+        while (elapsedTime < 5f)
+        {
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        ObjectPoolManager.ReturnObjectToPool(gameObject);
     }
     private IEnumerator DissolveCoroutine()
     {

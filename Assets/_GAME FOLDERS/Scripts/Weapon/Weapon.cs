@@ -162,22 +162,26 @@ public class Weapon : MonoBehaviour
             if (hit.transform.gameObject.CompareTag("Head"))
             {
                 hit.transform.GetComponentInParent<EnemyController>().TakeDamage(damage * 2);
-                Instantiate(_bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                ObjectPoolManager.SpawnObject(_bloodEffect.gameObject, hit.point, Quaternion.LookRotation(hit.normal), ObjectPoolManager.PoolType.ParticalSystem);
+                //Instantiate(_bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
             }
             else if (hit.transform.gameObject.CompareTag("Body"))
             {
                 hit.transform.GetComponentInParent<EnemyController>().TakeDamage(damage);
-                Instantiate(_bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                ObjectPoolManager.SpawnObject(_bloodEffect.gameObject, hit.point, Quaternion.LookRotation(hit.normal), ObjectPoolManager.PoolType.ParticalSystem);
+                //Instantiate(_bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
             }
             else if (hit.transform.CompareTag("OverEnemy")) // Duruma gore ilave yapilabilir
             {
                 hit.transform.gameObject.GetComponent<EnemyController>().TakeDamage(damage);
                 Rigidbody rg = hit.transform.gameObject.GetComponent<Rigidbody>();
                 rg.AddForce(-hit.normal * 50f);
-                Instantiate(_bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                ObjectPoolManager.SpawnObject(_bloodEffect.gameObject, hit.point, Quaternion.LookRotation(hit.normal), ObjectPoolManager.PoolType.ParticalSystem);
+                //Instantiate(_bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
             }
             else
-                Instantiate(_bulletDecalEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                ObjectPoolManager.SpawnObject(_bulletDecalEffect.gameObject, hit.point, Quaternion.LookRotation(hit.normal), ObjectPoolManager.PoolType.ParticalSystem);
+            //Instantiate(_bulletDecalEffect, hit.point, Quaternion.LookRotation(hit.normal));
         }
 
     }
@@ -185,12 +189,13 @@ public class Weapon : MonoBehaviour
     {
         if (_isBulletCassing)
         {
-            GameObject obejct = Instantiate(_bulletCassingObejct, _bulletExitPointCassing.transform.position, _bulletExitPointCassing.transform.rotation);
-            Rigidbody rigidbody = obejct.GetComponent<Rigidbody>();
-            rigidbody.AddRelativeForce(new Vector3(-10, 1, 0) * 60);
-        }
 
-        Instantiate(_bulletObject, _bulletExitPoint.transform.position, _bulletExitPoint.transform.rotation);
+            GameObject obejct = ObjectPoolManager.SpawnObject(_bulletCassingObejct, _bulletExitPointCassing.transform.position, _bulletExitPointCassing.transform.rotation, ObjectPoolManager.PoolType.GameObject);
+            Rigidbody rigidbody = obejct.GetComponent<Rigidbody>();
+            rigidbody.AddRelativeForce(new Vector3(-10, 1, 0) * 125);
+
+        }
+        ObjectPoolManager.SpawnObject(_bulletObject, _bulletExitPoint.transform.position, _bulletExitPoint.transform.rotation);
 
         if (isCameraShake)
         {

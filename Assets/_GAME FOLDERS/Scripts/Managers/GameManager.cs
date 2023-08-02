@@ -115,7 +115,7 @@ public class GameManager : MonoBehaviour
                 int enemy = Random.Range(0, _enemies.Length);
                 int spawnPoints = Random.Range(0, _enemySpawnPoints.Length);
 
-                GameObject obj = Instantiate(_enemies[enemy], _enemySpawnPoints[spawnPoints].transform.position, Quaternion.identity);
+                GameObject obj = ObjectPoolManager.SpawnObject(_enemies[enemy], _enemySpawnPoints[spawnPoints].transform.position, Quaternion.identity, ObjectPoolManager.PoolType.Enemy);
                 obj.GetComponent<EnemyController>().SetTarget(_targetPoint);
                 _totalEnemyCount--;
             }
