@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     //STATIC
     public static bool IsGameActive;
-    public static int reamingEnemyCount;
+    public static int currentEnemyCount;
     //PRIVATE
     int _currentWeaponIndex;
     //PUBLIC
@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CameraManager _cameraManager;
     [SerializeField] private GameObject _gameOverPanelObject;
     [SerializeField] private GameObject _winPanelObject;
-    [SerializeField] private TextMeshProUGUI _remainingEnemyText;
+    [SerializeField] private TextMeshProUGUI _currentEnemyText;
     [SerializeField] private TextMeshProUGUI _totalEnemyText;
 
     [Header("WEAPON CONTROLS")]
@@ -61,9 +61,9 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         //Enemy Count
-        reamingEnemyCount = 0;
+        currentEnemyCount = 0;
         _totalEnemyText.text = _targetEnemyCount.ToString();
-        _remainingEnemyText.text = reamingEnemyCount.ToString();
+        _currentEnemyText.text = currentEnemyCount.ToString();
 
         _health = 100;
         _healthBar.fillAmount = 1f;
@@ -75,15 +75,15 @@ public class GameManager : MonoBehaviour
     }
     public void UpdateEnemyCount()
     {
-        reamingEnemyCount++;
-        if (reamingEnemyCount >= _targetEnemyCount)
+        currentEnemyCount++;
+        if (currentEnemyCount >= _targetEnemyCount)
         {
             // WIN
             //TODO: Oyun durdurma iþlemi yapýlacak. Delay eklenebilri
             Win();
         }
         else
-            _remainingEnemyText.text = reamingEnemyCount.ToString();
+            _currentEnemyText.text = currentEnemyCount.ToString();
 
     }
     IEnumerator SpawnEnemy()
@@ -137,7 +137,7 @@ public class GameManager : MonoBehaviour
         //Time.timeScale = 0;
         _cameraManager.EndGameCamEffect();
         _winPanelObject.SetActive(true);
-        _remainingEnemyText.text = 0.ToString();
+        _currentEnemyText.text = 0.ToString();
     }
     private void ChangeWeapon(int newWeaponIndex)
     {

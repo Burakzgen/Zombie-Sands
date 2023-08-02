@@ -14,6 +14,7 @@ public class EnemyController : MonoBehaviour
     [Header("OTHER SETTINGS")]
     [SerializeField] private float _health;
     [SerializeField] private float _damage;
+    [SerializeField] private string[] _randomWalkAnimation;
 
     [Header("DISSOLVE CONTROLS")]
     [SerializeField] private SkinnedMeshRenderer _skinnedMesh;
@@ -26,6 +27,9 @@ public class EnemyController : MonoBehaviour
     {
         _agent = GetComponent<NavMeshAgent>();
         _myAnimator = GetComponent<Animator>();
+
+        int index = Random.Range(0, _randomWalkAnimation.Length);
+        _myAnimator.Play(_randomWalkAnimation[index]);
 
         _gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         //_isDead = false;
@@ -55,17 +59,19 @@ public class EnemyController : MonoBehaviour
         _health -= damage;
         if (_health <= 0)
         {
-            Dead();
-            gameObject.tag = "Untagged";
+            if (damage>=100)
+                Dead("Head_Shot");
+            else
+                Dead("Normal_Shot_Dead");
         }
     }
 
-    private void Dead()
+    private void Dead(string deadStyle)
     {
         _gameManager.UpdateEnemyCount();
-        _myAnimator.Play("Normal_Shot_Dead");
-        _agent.speed = 0;
+        _myAnimator.Play(deadStyle);
         StartCoroutine(DissolveCoroutine());
+        _agent.enabled = false;
         //TODO: Object pooling kontrolune göre ayarlanacak.
         Destroy(gameObject, 5f);
     }

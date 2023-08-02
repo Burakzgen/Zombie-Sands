@@ -9,7 +9,7 @@ public class Weapon : MonoBehaviour
     Animator _myAnimator;
     private float _fireFreq;                                    // Ateþ etme sýklýðý iç kontrolu
     float _camFieldPov;
-    private int _remainingBullet;                               // Kalan mermi sayýsý
+    private int _currentBullet;                               // Kalan mermi sayýsý
     private bool _isZoom;
 
     //PUBLIC
@@ -72,19 +72,19 @@ public class Weapon : MonoBehaviour
         // Mermi atis
         if (Input.GetKey(KeyCode.Mouse0) && !Input.GetKey(KeyCode.Mouse1))
         {
-            if (isFire && Time.time > _fireFreq && _remainingBullet != 0)
+            if (isFire && Time.time > _fireFreq && _currentBullet != 0)
             {
                 Fire();
                 _fireFreq = Time.time + fireRate;
             }
-            if (_remainingBullet == 0)
+            if (_currentBullet == 0)
                 _bulletEndingSound.Play();
         }
 
         // Mermi Doldurma
         if (Input.GetKey(KeyCode.R))
         {
-            if (_remainingBullet < magazineSize && _totalBullet != 0)
+            if (_currentBullet < magazineSize && _totalBullet != 0)
             {
                 _myAnimator.Play("Reload");
             }
@@ -110,14 +110,14 @@ public class Weapon : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Mouse0))
             {
-                if (isFire && Time.time > _fireFreq && _remainingBullet != 0)
+                if (isFire && Time.time > _fireFreq && _currentBullet != 0)
                 {
                     Fire();
                     _fireFreq = Time.time + fireRate;
 
                 }
 
-                if (_remainingBullet == 0)
+                if (_currentBullet == 0)
                     _bulletEndingSound.Play();
             }
         }
@@ -202,8 +202,8 @@ public class Weapon : MonoBehaviour
 
         _myAnimator.Play(_animationStateName);
 
-        _remainingBullet--;
-        _remainingBulletsText.text = _remainingBullet.ToString();
+        _currentBullet--;
+        _remainingBulletsText.text = _currentBullet.ToString();
 
 
     }
@@ -212,12 +212,12 @@ public class Weapon : MonoBehaviour
     {
         if (_totalBullet <= magazineSize)
         {
-            _remainingBullet = _totalBullet;
+            _currentBullet = _totalBullet;
             _totalBullet = 0;
         }
         else
         {
-            _remainingBullet = magazineSize;
+            _currentBullet = magazineSize;
             _totalBullet -= magazineSize;
         }
         AmmoReloadController("NormalText");
@@ -226,9 +226,9 @@ public class Weapon : MonoBehaviour
     private void ChangerReload()
     {
         _reloadSound.Play();
-        if (_remainingBullet < magazineSize && _totalBullet != 0)
+        if (_currentBullet < magazineSize && _totalBullet != 0)
         {
-            if (_remainingBullet != 0)
+            if (_currentBullet != 0)
             {
                 AmmoReloadController("Bullet");
             }
@@ -246,44 +246,44 @@ public class Weapon : MonoBehaviour
             case "Bullet":
                 if (_totalBullet <= magazineSize)
                 {
-                    int totalValue = _remainingBullet + _totalBullet;
+                    int totalValue = _currentBullet + _totalBullet;
 
                     if (totalValue > magazineSize)
                     {
-                        _remainingBullet = magazineSize;
+                        _currentBullet = magazineSize;
                         _totalBullet = totalValue - magazineSize;
                     }
                     else
                     {
-                        _remainingBullet += _totalBullet;
+                        _currentBullet += _totalBullet;
                         _totalBullet = 0;
                     }
                 }
                 else
                 {
-                    _totalBullet -= magazineSize - _remainingBullet;
-                    _remainingBullet = magazineSize;
+                    _totalBullet -= magazineSize - _currentBullet;
+                    _currentBullet = magazineSize;
                 }
                 _totalBulletsText.text = _totalBullet.ToString();
-                _remainingBulletsText.text = _remainingBullet.ToString();
+                _remainingBulletsText.text = _currentBullet.ToString();
                 break;
             case "NoBullet":
                 if (_totalBullet <= magazineSize)
                 {
-                    _remainingBullet = _totalBullet;
+                    _currentBullet = _totalBullet;
                     _totalBullet = 0;
                 }
                 else
                 {
                     _totalBullet -= magazineSize;
-                    _remainingBullet = magazineSize;
+                    _currentBullet = magazineSize;
                 }
                 _totalBulletsText.text = _totalBullet.ToString();
-                _remainingBulletsText.text = _remainingBullet.ToString();
+                _remainingBulletsText.text = _currentBullet.ToString();
                 break;
             case "NormalText":
                 _totalBulletsText.text = _totalBullet.ToString();
-                _remainingBulletsText.text = _remainingBullet.ToString();
+                _remainingBulletsText.text = _currentBullet.ToString();
                 break;
         }
     }

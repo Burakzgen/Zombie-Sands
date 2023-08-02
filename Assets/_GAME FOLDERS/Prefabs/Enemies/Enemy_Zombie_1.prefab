@@ -3961,6 +3961,11 @@ MonoBehaviour:
   _target: {fileID: 0}
   _health: 100
   _damage: 15
+  _randomWalkAnimation:
+  - Normal_Walk
+  - Dumb_Walk_1
+  - Dumb_Walk_2
+  - Dumb_Walk_3
   _skinnedMesh: {fileID: 5423296801629287181}
   _headMesh: {fileID: 5423296801624365113}
   DissolveRate: 0.0125
