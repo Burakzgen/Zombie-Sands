@@ -66,8 +66,8 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
             objectToSpawn = obj;
         }
 
-        objectToSpawn.SetActive(true);
         objectToSpawn.transform.SetPositionAndRotation(position, rotation);
+        objectToSpawn.SetActive(true);
 
         return objectToSpawn;
     }

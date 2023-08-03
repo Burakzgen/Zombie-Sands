@@ -12,7 +12,7 @@ public class GameManager : Singleton<GameManager>
     public bool IsGameActive;
     public int currentEnemyCount;
     //PRIVATE
-    int _currentWeaponIndex;
+    public int _currentWeaponIndex;
     //PUBLIC
     [Header("OTHERS CONTROLS")]
 
@@ -53,7 +53,7 @@ public class GameManager : Singleton<GameManager>
         {
             for (int i = 0; i < _weaponsObject.Length; i++)
             {
-                if (Input.GetKeyDown(_weaponsObject[i].GetComponent<Weapon>().activationKey))
+                if (Input.GetKeyDown(_weaponsObject[i].GetComponent<WeaponController>().activationKey))
                 {
                     ChangeWeapon(i);
                 }
@@ -195,6 +195,6 @@ public class GameManager : Singleton<GameManager>
         _weaponsObject[_currentWeaponIndex].SetActive(false);
         _weaponsObject[newWeaponIndex].SetActive(true);
         _currentWeaponIndex = newWeaponIndex;
-        _weaponsObject[_currentWeaponIndex].GetComponent<Weapon>().AmmoReloadController("Normal");
+        _weaponsObject[_currentWeaponIndex].GetComponent<AmmoController>().AmmoReloadController("Normal");
     }
 }
