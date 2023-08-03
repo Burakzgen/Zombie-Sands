@@ -111,13 +111,13 @@ public class GameManager : Singleton<GameManager>
         if (_isTimeMode)
         {
             _totalEnemyCount = HelperMethods.GetInt(30, 50);
-            float number = Mathf.Floor(_totalEnemyCount * 0.75f);
+            float number = Mathf.Round(_totalEnemyCount * 0.75f);
             _targetEnemyCount = (int)HelperMethods.GetFloat(15, number);
         }
         else
         {
             _totalEnemyCount = HelperMethods.GetInt(15, 30);
-            float number = Mathf.Floor(_totalEnemyCount * 0.75f);
+            float number = Mathf.Round(_totalEnemyCount * 0.75f);
             _targetEnemyCount = (int)HelperMethods.GetFloat(10, number);
         }
 
