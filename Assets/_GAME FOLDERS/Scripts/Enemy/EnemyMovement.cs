@@ -20,10 +20,8 @@ public class EnemyMovement : MonoBehaviour
         {
             _agent.SetDestination(_target.transform.position);
         }
-        else
-            StartCoroutine(FindTarget());
     }
-   
+   /*
     // Belirli bir süre sonra tekrar denemek için yapýldý. 
     IEnumerator FindTarget()
     {
@@ -37,6 +35,7 @@ public class EnemyMovement : MonoBehaviour
             }
         }
     }
+   */
     public void SetTarget(Transform target)
     {
         _target = target;

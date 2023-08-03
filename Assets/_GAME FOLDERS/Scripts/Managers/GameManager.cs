@@ -21,7 +21,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameObject _winPanelObject;
     [SerializeField] private GameObject _pausePanel;
     [SerializeField] private GameObject _gameWindowPanel;
-
+    float _spawnDuration = 3;
     [Header("UI Controls")]
     [SerializeField] private Image _damageEffectImage;
     [SerializeField] private Image _healthBar;
@@ -34,8 +34,9 @@ public class GameManager : Singleton<GameManager>
     [Header("Enemy Controls")]
     [SerializeField] private Transform[] _enemySpawnPoints;
     [SerializeField] private Transform _targetPoint;
-    [SerializeField] private int _totalEnemyCount;
-    [SerializeField] private int _targetEnemyCount;
+    private int _totalEnemyCount;
+    private int _targetEnemyCount;
+
 
     [Header("GameMode Controls")]
     [SerializeField] private TextMeshProUGUI _timerText;
@@ -86,7 +87,7 @@ public class GameManager : Singleton<GameManager>
         }
         else
         {
-            _timerText.text =Mathf.Round(_timer).ToString();
+            _timerText.text = Mathf.Round(_timer).ToString();
         }
     }
     private void ModeController()
@@ -96,19 +97,35 @@ public class GameManager : Singleton<GameManager>
         if (_isTimeMode)
         {
             _timerText.gameObject.SetActive(true);
+            _spawnDuration = 0.5f;
             _timer = 60f;
         }
         else
         {
             _timerText.gameObject.SetActive(false);
+            _spawnDuration = 2.2f;
         }
     }
     private void InitializeGame()
     {
+        if (_isTimeMode)
+        {
+            _totalEnemyCount = HelperMethods.GetInt(30, 50);
+            float number = Mathf.Floor(_totalEnemyCount * 0.75f);
+            _targetEnemyCount = (int)HelperMethods.GetFloat(15, number);
+        }
+        else
+        {
+            _totalEnemyCount = HelperMethods.GetInt(15, 30);
+            float number = Mathf.Floor(_totalEnemyCount * 0.75f);
+            _targetEnemyCount = (int)HelperMethods.GetFloat(10, number);
+        }
+
         SetCursorState(CursorLockMode.Locked);
 
         //Enemy Count
         CurrentEnemyCount = 0;
+
         _totalEnemyText.text = _targetEnemyCount.ToString();
         _currentEnemyText.text = CurrentEnemyCount.ToString();
 
@@ -116,7 +133,7 @@ public class GameManager : Singleton<GameManager>
         _healthBar.fillAmount = 1f;
         _currentWeaponIndex = 0;
         //TODO: Oyun sesi aktif edilebilir.
-    
+
     }
     public void HandleStartGame()
     {
@@ -127,7 +144,7 @@ public class GameManager : Singleton<GameManager>
     {
         while (IsGameActive && _totalEnemyCount > 0)
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(_spawnDuration);
             SpawnEnemy();
         }
     }
@@ -145,7 +162,7 @@ public class GameManager : Singleton<GameManager>
             chosenZombiePoolName = "Hard_Zombie";
 
         GameObject chosenZombie = ObjectPoolManager.Instance.SpawnFromPool(chosenZombiePoolName, _enemySpawnPoints[spawnPointIndex].transform.position, Quaternion.identity, _enemySpawnPoints[spawnPointIndex]);
-
+        chosenZombie.GetComponent<NavMeshAgent>().enabled = true;
         chosenZombie.GetComponent<EnemyMovement>().SetTarget(_targetPoint);
         _totalEnemyCount--;
     }
@@ -215,7 +232,7 @@ public class GameManager : Singleton<GameManager>
     private void DisableEnemies()
     {
         NavMeshAgent[] enemies = GameObject.FindObjectsOfType<NavMeshAgent>();
-        
+
         foreach (var item in enemies)
         {
             item.enabled = false;
