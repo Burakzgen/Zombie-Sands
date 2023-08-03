@@ -905,7 +905,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 556230223}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: OnSounds
+        m_MethodName: UnmuteAllSounds
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1685,7 +1685,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 556230223}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: MuteSounds
+        m_MethodName: MuteAllSounds
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2485,8 +2485,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 416147850}
-        m_TargetAssemblyTypeName: SceneManager, Assembly-CSharp
-        m_MethodName: SceneController
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: LoadSceneWithLoadingScreen
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

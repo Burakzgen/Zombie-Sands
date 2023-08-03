@@ -8,47 +8,49 @@ using UnityEngine.AI;
 
 public class GameManager : Singleton<GameManager>
 {
-    //STATIC
     public bool IsGameActive;
-    public int currentEnemyCount;
-    //PRIVATE
-    public int _currentWeaponIndex;
-    //PUBLIC
-    [Header("OTHERS CONTROLS")]
+    public int CurrentEnemyCount;
 
+    [Header("Private Controls")]
+    [HideInInspector] public int _currentWeaponIndex;
+    private float _health;
+
+    [Header("General Controls")]
     [SerializeField] private CameraTransition _cameraTransitionManager;
     [SerializeField] private GameObject _gameOverPanelObject;
     [SerializeField] private GameObject _winPanelObject;
     [SerializeField] private GameObject _pausePanel;
     [SerializeField] private GameObject _gameWindowPanel;
+
+    [Header("UI Controls")]
     [SerializeField] private Image _damageEffectImage;
+    [SerializeField] private Image _healthBar;
     [SerializeField] private TextMeshProUGUI _currentEnemyText;
     [SerializeField] private TextMeshProUGUI _totalEnemyText;
 
-    [Header("WEAPON CONTROLS")]
+    [Header("Weapon Controls")]
     [SerializeField] private GameObject[] _weaponsObject;
 
-    [Header("ENEMY CONTROLS")]
-    [SerializeField] private GameObject[] _enemies;
+    [Header("Enemy Controls")]
     [SerializeField] private Transform[] _enemySpawnPoints;
     [SerializeField] private Transform _targetPoint;
     [SerializeField] private int _totalEnemyCount;
     [SerializeField] private int _targetEnemyCount;
 
-    [Header("HEALTH CONTROLS")]
-    float _health;
-    [SerializeField] private Image _healthBar;
-
 
     void Start()
     {
-        InitialSettings();
+        InitializeGame();
     }
     void Update()
     {
         if (!IsGameActive)
             return;
 
+        HandleInput();
+    }
+    private void HandleInput()
+    {
         if (Input.anyKey && !Input.GetKey(KeyCode.Mouse1))
         {
             for (int i = 0; i < _weaponsObject.Length; i++)
@@ -63,69 +65,66 @@ public class GameManager : Singleton<GameManager>
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (Time.timeScale != 0)
-                Pause();
+                PauseGame();
             else
                 ResumeGame();
         }
     }
-    private void InitialSettings()
+    private void InitializeGame()
     {
-
-        Cursor.lockState = CursorLockMode.Locked;
+        SetCursorState(CursorLockMode.Locked);
 
         //Enemy Count
-        currentEnemyCount = 0;
+        CurrentEnemyCount = 0;
         _totalEnemyText.text = _targetEnemyCount.ToString();
-        _currentEnemyText.text = currentEnemyCount.ToString();
+        _currentEnemyText.text = CurrentEnemyCount.ToString();
 
         _health = 100;
         _healthBar.fillAmount = 1f;
         _currentWeaponIndex = 0;
         //TODO: Oyun sesi aktif edilebilir.
+    
+    }
+    public void HandleStartGame()
+    {
+        StartCoroutine(SpawnEnemyCoroutine());
+    }
+    IEnumerator SpawnEnemyCoroutine()
+    {
+        while (IsGameActive && _totalEnemyCount > 0)
+        {
+            yield return new WaitForSeconds(3f);
+            SpawnEnemy();
+        }
+    }
+    private void SpawnEnemy()
+    {
+        int spawnPointIndex = HelperMethods.GetInt(0, _enemySpawnPoints.Length);
+        string chosenZombiePoolName;
+        float randomWeight = HelperMethods.GetFloat(0f, 1f);
 
-        //TODO: Düþman oluþturma baþlatýlabilir.
-        StartCoroutine(SpawnEnemy());
+        if (randomWeight < 0.5f) // %50 olasýlýk
+            chosenZombiePoolName = "Basic_Zombie";
+        else if (randomWeight < 0.8f) // %30 olasýlýk
+            chosenZombiePoolName = "Normal_Zombie";
+        else // %20 olasýlýk
+            chosenZombiePoolName = "Hard_Zombie";
+
+        GameObject chosenZombie = ObjectPoolManager.Instance.SpawnFromPool(chosenZombiePoolName, _enemySpawnPoints[spawnPointIndex].transform.position, Quaternion.identity);
+        chosenZombie.GetComponent<EnemyMovement>().SetTarget(_targetPoint);
+        _totalEnemyCount--;
     }
     public void UpdateEnemyCount()
     {
-        currentEnemyCount++;
-        if (currentEnemyCount >= _targetEnemyCount)
+        CurrentEnemyCount++;
+        if (CurrentEnemyCount >= _targetEnemyCount)
         {
-            // WIN
-            //TODO: Oyun durdurma iþlemi yapýlacak. Delay eklenebilri
-            StartCoroutine(HelperMethods.DoAfterDelay(() =>
-            {
-                Win();
-            }, 1f));
+            // 1 Saniye Delay
+            StartCoroutine(HelperMethods.DoAfterDelay(() => { GameWin(); }, 1f));
         }
         else
-            _currentEnemyText.text = currentEnemyCount.ToString();
+            _currentEnemyText.text = CurrentEnemyCount.ToString();
 
-    }
-    IEnumerator SpawnEnemy()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(3f);
-
-            if (_totalEnemyCount != 0)
-            {
-                int spawnPoints = Random.Range(0, _enemySpawnPoints.Length);
-                GameObject chosenZombie;
-                float randomWeight = Random.Range(0f, 1f);
-
-                if (randomWeight < 0.5f) // %50 olasýlýk
-                    chosenZombie = ObjectPoolManager.Instance.SpawnFromPool("Basic_Zombie", _enemySpawnPoints[spawnPoints].transform.position, Quaternion.identity);
-                else if (randomWeight < 0.8f) // %30 olasýlýk
-                    chosenZombie = ObjectPoolManager.Instance.SpawnFromPool("Normal_Zombie", _enemySpawnPoints[spawnPoints].transform.position, Quaternion.identity);
-                else // %20 olasýlýk
-                    chosenZombie = ObjectPoolManager.Instance.SpawnFromPool("Hard_Zombie", _enemySpawnPoints[spawnPoints].transform.position, Quaternion.identity);
-
-                chosenZombie.GetComponent<EnemyMovement>().SetTarget(_targetPoint);
-                _totalEnemyCount--;
-            }
-
-        }
     }
     public void TakeDamage(float damage)
     {
@@ -138,50 +137,47 @@ public class GameManager : Singleton<GameManager>
         else
         {
             _healthBar.fillAmount -= damage / 100;
-            DamageEffect();
+            ShowDamageEffect();
         }
 
     }
-    private void DamageEffect()
+    private void ShowDamageEffect()
     {
         _damageEffectImage.DOFade(0.65f, 0.5f).SetLoops(2, LoopType.Yoyo);
     }
     private void GameOver()
     {
-        //TODO: TimeScale yerine alternatif bir yol yapýlmalý.
-        IsGameActive = false;
-        StopAllCoroutines();
-        _gameWindowPanel.SetActive(false);
-        EnemyDeath();
-        Cursor.lockState = CursorLockMode.None;
-        //Time.timeScale = 0;
-        _cameraTransitionManager.EndGameCameraTransition();
-        _gameOverPanelObject.SetActive(true);
+        GameCompleted(_gameOverPanelObject);
     }
-    private void Win()
+    private void GameWin()
     {
-        //TODO: TimeScale yerine alternatif bir yol yapýlmalý.
+        GameCompleted(_winPanelObject);
+    }
+    private void GameCompleted(GameObject panel)
+    {
         IsGameActive = false;
         StopAllCoroutines();
-        _gameWindowPanel.SetActive(false);
-        EnemyDeath();
-        Cursor.lockState = CursorLockMode.None;
-        //Time.timeScale = 0;
+        DisableEnemies();
+        SetCursorState(CursorLockMode.None);
         _cameraTransitionManager.EndGameCameraTransition();
-        _winPanelObject.SetActive(true);
-        _currentEnemyText.text = 0.ToString();
+        panel.SetActive(true);
+        _gameWindowPanel.SetActive(false);
     }
-    private void Pause()
+    private void PauseGame()
     {
         Time.timeScale = 0;
+        SetCursorState(CursorLockMode.None);
         _pausePanel.SetActive(true);
+        _gameWindowPanel.SetActive(false);
     }
     public void ResumeGame()
     {
         Time.timeScale = 1;
+        SetCursorState(CursorLockMode.Locked);
         _pausePanel.SetActive(false);
+        _gameWindowPanel.SetActive(true);
     }
-    private void EnemyDeath()
+    private void DisableEnemies()
     {
         NavMeshAgent[] enemies = GameObject.FindObjectsOfType<NavMeshAgent>();
         foreach (var item in enemies)
@@ -189,12 +185,18 @@ public class GameManager : Singleton<GameManager>
             item.enabled = false;
         }
     }
-    private void ChangeWeapon(int newWeaponIndex)
+    private void ChangeWeapon(int weaponIndex)
     {
-        //TODO: Degiþim sesi eklenebilir.
+        if (weaponIndex == _currentWeaponIndex)
+            return;
+        // TODO: Degisim sesi gelebilir.
         _weaponsObject[_currentWeaponIndex].SetActive(false);
-        _weaponsObject[newWeaponIndex].SetActive(true);
-        _currentWeaponIndex = newWeaponIndex;
+        _weaponsObject[weaponIndex].SetActive(true);
+        _currentWeaponIndex = weaponIndex;
         _weaponsObject[_currentWeaponIndex].GetComponent<AmmoController>().AmmoReloadController("Normal");
+    }
+    private void SetCursorState(CursorLockMode cursorLockMode)
+    {
+        Cursor.lockState = cursorLockMode;
     }
 }

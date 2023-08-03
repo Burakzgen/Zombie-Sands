@@ -2,21 +2,19 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SceneManager : MonoBehaviour
+public class SceneLoader : MonoBehaviour
 {
     [Header("LOADING CONTROLS")]
     [SerializeField] private GameObject _loadingPanel;
     [SerializeField] private Slider _loadingSlider;
-    public void SceneController(int scene)
+    public void LoadSceneWithLoadingScreen(int sceneIndex)
     {
-
-        StartCoroutine(LoadingController(scene));
+        StartCoroutine(StartAsyncSceneLoad(sceneIndex));
     }
-
-    IEnumerator LoadingController(int scene)
+    IEnumerator StartAsyncSceneLoad(int sceneIndex)
     {
         _loadingPanel.SetActive(true);
-        AsyncOperation operation = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(scene);
+        AsyncOperation operation = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneIndex);
         while (!operation.isDone)
         {
             float value = Mathf.Clamp01(operation.progress / .9f);

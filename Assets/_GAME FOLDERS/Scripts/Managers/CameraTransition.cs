@@ -23,6 +23,7 @@ public class CameraTransition : MonoBehaviour
     {
         _camera.gameObject.SetActive(false);
         GameManager.Instance.IsGameActive = true;
+        GameManager.Instance.HandleStartGame();
         _crosshair.SetActive(true);
     }
     public void EndGameCameraTransition()
