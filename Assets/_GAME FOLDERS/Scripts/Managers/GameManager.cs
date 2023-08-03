@@ -110,7 +110,8 @@ public class GameManager : Singleton<GameManager>
         else // %20 olasýlýk
             chosenZombiePoolName = "Hard_Zombie";
 
-        GameObject chosenZombie = ObjectPoolManager.Instance.SpawnFromPool(chosenZombiePoolName, _enemySpawnPoints[spawnPointIndex].transform.position, Quaternion.identity);
+        GameObject chosenZombie = ObjectPoolManager.Instance.SpawnFromPool(chosenZombiePoolName, _enemySpawnPoints[spawnPointIndex].transform.position, Quaternion.identity, _enemySpawnPoints[spawnPointIndex]);
+
         chosenZombie.GetComponent<EnemyMovement>().SetTarget(_targetPoint);
         _totalEnemyCount--;
     }
@@ -180,9 +181,11 @@ public class GameManager : Singleton<GameManager>
     private void DisableEnemies()
     {
         NavMeshAgent[] enemies = GameObject.FindObjectsOfType<NavMeshAgent>();
+        
         foreach (var item in enemies)
         {
             item.enabled = false;
+            item.gameObject.GetComponent<Animator>().Play("Idle");
         }
     }
     private void ChangeWeapon(int weaponIndex)

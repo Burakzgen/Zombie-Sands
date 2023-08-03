@@ -66,12 +66,44 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
             objectToSpawn = obj;
         }
 
+        objectToSpawn.SetActive(true);
+        objectToSpawn.transform.SetPositionAndRotation(position, rotation);
+
+        return objectToSpawn;
+    }
+    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation,Transform parent)
+    {
+        if (!poolDictionary.ContainsKey(tag))
+        {
+            Debug.LogWarning("Pool with tag " + tag + " doesn't exist.");
+            return null;
+        }
+
+        Queue<GameObject> objectsInPool = poolDictionary[tag];
+        GameObject objectToSpawn = null;
+
+        foreach (var obj in objectsInPool)
+        {
+            if (!obj.activeInHierarchy)
+            {
+                objectToSpawn = obj;
+                break;
+            }
+        }
+
+        if (objectToSpawn == null && pools.Find(pool => pool.tag == tag).shouldExpand)
+        {
+            GameObject obj = Instantiate(pools.Find(pool => pool.tag == tag).prefab);
+            obj.transform.parent = pools.Find(pool => pool.tag == tag).parent.transform;
+            obj.SetActive(false);
+            poolDictionary[tag].Enqueue(obj);
+            objectToSpawn = obj;
+        }
         objectToSpawn.transform.SetPositionAndRotation(position, rotation);
         objectToSpawn.SetActive(true);
 
         return objectToSpawn;
     }
- 
 
     public void ReturnToPool(string tag, GameObject objectToReturn)
     {

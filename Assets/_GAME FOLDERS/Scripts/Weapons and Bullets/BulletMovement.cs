@@ -10,10 +10,13 @@ public class BulletMovement : MonoBehaviour
         BulletMove();
         ReturnBulletToPool();
     }
+    private void OnDisable()
+    {
+        transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
+    }
     private void BulletMove()
     {
         rb.velocity = transform.forward * 150f;
-        gameObject.transform.rotation = Quaternion.identity;
     }
     private void ReturnBulletToPool()
     {

@@ -22,7 +22,6 @@ public class EnemyAppearance : MonoBehaviour
         get { return _myAnimator; }
     }
 
-
     private void Start()
     {
         _myAnimator = GetComponent<Animator>();
@@ -30,12 +29,18 @@ public class EnemyAppearance : MonoBehaviour
         _randomHeadNumber = Random.Range(0, _heads.Length);
         _randomBodyNumber = Random.Range(0, _bodies.Length);
 
-        int index = Random.Range(0, _randomWalkAnimation.Length);
-        _myAnimator.Play(_randomWalkAnimation[index]);
+        //SetRandomWalkAnimation();
 
         RandomPlayer();
+
         _dissolveHeadMaterial = _heads[_randomHeadNumber].GetComponent<MeshRenderer>().material;
         _dissolveBodyMaterial = _bodies[_randomBodyNumber].GetComponent<SkinnedMeshRenderer>().material;
+    }
+    // Animator uzerinden caigiriliacak
+    public void SetRandomWalkAnimation()
+    {
+        int index = Random.Range(0, _randomWalkAnimation.Length);
+        _myAnimator.Play(_randomWalkAnimation[index]);
     }
     public void DissolveEffect()
     {

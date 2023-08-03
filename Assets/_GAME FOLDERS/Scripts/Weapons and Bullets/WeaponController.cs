@@ -142,7 +142,7 @@ public class WeaponController : MonoBehaviour
         }
         else
         {
-            GameObject bulletImpact=ObjectPoolManager.Instance.SpawnFromPool("BulletImpactEffect", hit.point, Quaternion.LookRotation(hit.normal));
+            GameObject bulletImpact = ObjectPoolManager.Instance.SpawnFromPool("BulletImpactEffect", hit.point, Quaternion.LookRotation(hit.normal));
             bulletImpact.transform.localScale = GameManager.Instance._currentWeaponIndex switch
             {
                 0 => new Vector3(0.75f, 0.75f, 0.75f),
@@ -161,7 +161,8 @@ public class WeaponController : MonoBehaviour
             rigidbody.AddRelativeForce(new Vector3(-10, 1, 0) * 125);
 
         }
-        ObjectPoolManager.Instance.SpawnFromPool("Bullet", _bulletExitPoint.transform.position, _bulletExitPoint.transform.rotation);
+
+       ObjectPoolManager.Instance.SpawnFromPool("Bullet", _bulletExitPoint.transform.position, _bulletExitPoint.transform.rotation);
 
         if (isCameraShake)
         {
