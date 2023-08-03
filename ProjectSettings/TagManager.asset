@@ -8,10 +8,12 @@ TagManager:
   - OverEnemy
   - Ground
   - Target
-  - GameManager
   - Home
   - Body
   - Head
+  - Basic_Zombie
+  - Normal_Zombie
+  - Hard_Zombie
   layers:
   - Default
   - TransparentFX

@@ -39,6 +39,7 @@ public class GameManager : Singleton<GameManager>
     float _health;
     [SerializeField] private Image _healthBar;
 
+
     void Start()
     {
         InitialSettings();
@@ -120,7 +121,7 @@ public class GameManager : Singleton<GameManager>
                 else // %20 olasýlýk
                     chosenZombie = ObjectPoolManager.Instance.SpawnFromPool("Hard_Zombie", _enemySpawnPoints[spawnPoints].transform.position, Quaternion.identity);
 
-                chosenZombie.GetComponent<EnemyController>().SetTarget(_targetPoint);
+                chosenZombie.GetComponent<EnemyMovement>().SetTarget(_targetPoint);
                 _totalEnemyCount--;
             }
 

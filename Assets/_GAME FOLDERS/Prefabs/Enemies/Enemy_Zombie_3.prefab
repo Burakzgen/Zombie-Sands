@@ -11,11 +11,14 @@ GameObject:
   - component: {fileID: 3815741077692865876}
   - component: {fileID: 3815741077692865880}
   - component: {fileID: 3815741077692865879}
-  - component: {fileID: 3815741077692865878}
+  - component: {fileID: 8144145927627074215}
+  - component: {fileID: 4665898808442981868}
+  - component: {fileID: 3901642446789244843}
+  - component: {fileID: 9060208117506154901}
   - component: {fileID: -548403231241409981}
   m_Layer: 0
   m_Name: Enemy_Zombie_3
-  m_TagString: Untagged
+  m_TagString: Normal_Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,7 +82,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 3
---- !u!114 &3815741077692865878
+--- !u!114 &8144145927627074215
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -88,12 +91,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 3815741077692865875}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea32351ddd336954bb1193419fe42169, type: 3}
+  m_Script: {fileID: 11500000, guid: ae51b1ea3d1801843b7246bf8b61129e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 0}
+--- !u!114 &4665898808442981868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3815741077692865875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 205a41aa9a24411409d69c99e4c2c10b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _health: 100
-  _damage: 20
+  _damage: 15
+--- !u!114 &3901642446789244843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3815741077692865875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2dca3853ba12274c9951cc4154cb8e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _randomWalkAnimation:
   - Normal_Walk
   - Dumb_Walk_1
@@ -144,9 +170,21 @@ MonoBehaviour:
   - {fileID: 6121257698509550127}
   - {fileID: 6121257698509547795}
   - {fileID: 6121257698509584571}
-  _poolTag: Normal_Zombie
   DissolveRate: 0.0125
   RefleshRate: 0.07
+--- !u!65 &9060208117506154901
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3815741077692865875}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.06329627, z: 1.0866793}
+  m_Center: {x: 0.0000000014350494, y: -0.07489536, z: 0.24648468}
 --- !u!82 &-548403231241409981
 AudioSource:
   m_ObjectHideFlags: 0

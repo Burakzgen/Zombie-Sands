@@ -157,17 +157,17 @@ public class Weapon : MonoBehaviour
         {
             if (hit.transform.gameObject.CompareTag("Head"))
             {
-                hit.transform.GetComponentInParent<EnemyController>().TakeDamage(damage * 2);
+                hit.transform.GetComponentInParent<EnemyHealth>().TakeDamage(damage * 2);
                 ObjectPoolManager.Instance.SpawnFromPool("BloodEffect", hit.point, Quaternion.LookRotation(hit.normal));
             }
             else if (hit.transform.gameObject.CompareTag("Body"))
             {
-                hit.transform.GetComponentInParent<EnemyController>().TakeDamage(damage);
+                hit.transform.GetComponentInParent<EnemyHealth>().TakeDamage(damage);
                 ObjectPoolManager.Instance.SpawnFromPool("BloodEffect", hit.point, Quaternion.LookRotation(hit.normal));
             }
             else if (hit.transform.CompareTag("OverEnemy")) // Duruma gore ilave yapilabilir
             {
-                hit.transform.gameObject.GetComponent<EnemyController>().TakeDamage(damage);
+                hit.transform.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
                 Rigidbody rg = hit.transform.gameObject.GetComponent<Rigidbody>();
                 rg.AddForce(-hit.normal * 50f);
                 ObjectPoolManager.Instance.SpawnFromPool("BloodEffect", hit.point, Quaternion.LookRotation(hit.normal));
