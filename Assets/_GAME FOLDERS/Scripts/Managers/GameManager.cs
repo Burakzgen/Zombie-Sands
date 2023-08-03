@@ -16,7 +16,7 @@ public class GameManager : Singleton<GameManager>
     //PUBLIC
     [Header("OTHERS CONTROLS")]
 
-    [SerializeField] private TransitionCameraManager _cameraManager;
+    [SerializeField] private CameraTransition _cameraTransitionManager;
     [SerializeField] private GameObject _gameOverPanelObject;
     [SerializeField] private GameObject _winPanelObject;
     [SerializeField] private GameObject _pausePanel;
@@ -155,7 +155,7 @@ public class GameManager : Singleton<GameManager>
         EnemyDeath();
         Cursor.lockState = CursorLockMode.None;
         //Time.timeScale = 0;
-        _cameraManager.EndGameCamEffect();
+        _cameraTransitionManager.EndGameCameraTransition();
         _gameOverPanelObject.SetActive(true);
     }
     private void Win()
@@ -167,7 +167,7 @@ public class GameManager : Singleton<GameManager>
         EnemyDeath();
         Cursor.lockState = CursorLockMode.None;
         //Time.timeScale = 0;
-        _cameraManager.EndGameCamEffect();
+        _cameraTransitionManager.EndGameCameraTransition();
         _winPanelObject.SetActive(true);
         _currentEnemyText.text = 0.ToString();
     }
