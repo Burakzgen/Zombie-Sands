@@ -37,7 +37,10 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private int _totalEnemyCount;
     [SerializeField] private int _targetEnemyCount;
 
-
+    [Header("GameMode Controls")]
+    [SerializeField] private TextMeshProUGUI _timerText;
+    private float _timer;
+    private bool _isTimeMode;
     void Start()
     {
         InitializeGame();
@@ -48,6 +51,9 @@ public class GameManager : Singleton<GameManager>
             return;
 
         HandleInput();
+
+        if (_isTimeMode)
+            Timer();
     }
     private void HandleInput()
     {
@@ -70,6 +76,33 @@ public class GameManager : Singleton<GameManager>
                 ResumeGame();
         }
     }
+    private void Timer()
+    {
+        _timer -= Time.deltaTime;
+
+        if (_timer <= 0)
+        {
+            GameOver();
+        }
+        else
+        {
+            _timerText.text =Mathf.Round(_timer).ToString();
+        }
+    }
+    private void ModeController()
+    {
+        _isTimeMode = PlayerPrefs.GetInt("GameMode") == 1;
+
+        if (_isTimeMode)
+        {
+            _timerText.gameObject.SetActive(true);
+            _timer = 60f;
+        }
+        else
+        {
+            _timerText.gameObject.SetActive(false);
+        }
+    }
     private void InitializeGame()
     {
         SetCursorState(CursorLockMode.Locked);
@@ -87,6 +120,7 @@ public class GameManager : Singleton<GameManager>
     }
     public void HandleStartGame()
     {
+        ModeController();
         StartCoroutine(SpawnEnemyCoroutine());
     }
     IEnumerator SpawnEnemyCoroutine()

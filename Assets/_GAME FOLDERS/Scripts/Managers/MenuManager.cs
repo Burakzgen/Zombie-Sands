@@ -4,6 +4,7 @@ using UnityEngine;
 public class MenuManager : MonoBehaviour
 {
     [SerializeField] private TMP_Dropdown _qualityDropdown;
+    [SerializeField] SceneLoader _sceneLoader;
     private void Awake()
     {
         InitializeQualityDropdown();
@@ -21,12 +22,24 @@ public class MenuManager : MonoBehaviour
     {
         AudioListener.volume = 1;
     }
+    // Duruma gore ilave edilebilir.
+    private void SetAudioListenerVolume(int volumeLevel)
+    {
+        AudioListener.volume = volumeLevel;
+    }
     public void SetQuality(int qualityIndex)
     {
         QualitySettings.SetQualityLevel(qualityIndex);
     }
-    private void SetAudioListenerVolume(int volumeLevel)
+    public void SetNormalMode()
     {
-        AudioListener.volume = volumeLevel;
+        PlayerPrefs.SetInt("GameMode", 0);
+        _sceneLoader.LoadSceneWithLoadingScreen(1);
+    }
+
+    public void SetTimeMode()
+    {
+        PlayerPrefs.SetInt("GameMode", 1);
+        _sceneLoader.LoadSceneWithLoadingScreen(1);
     }
 }
