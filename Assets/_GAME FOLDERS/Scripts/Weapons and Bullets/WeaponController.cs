@@ -29,8 +29,7 @@ public class WeaponController : MonoBehaviour
     [Header("ZOOM SETTINGS")]
     private bool _isZoom;
     [SerializeField] private bool isSniper;
-    [SerializeField] private GameObject _cross;
-    [SerializeField] private GameObject _scope;
+    [SerializeField] private UIController _uiController;
     float _camFieldPov;
     [SerializeField] private float _approachRange;              // Dürbün yaklaþma oraný.
 
@@ -185,8 +184,8 @@ public class WeaponController : MonoBehaviour
         {
             if (isSniper)
             {
-                _cross.SetActive(false);
-                _scope.SetActive(true);
+                _uiController.SetCrosshairActive(false);
+                _uiController.SetScopeActive(true);
                 _cam.cullingMask = ~(1 << 8);
                 _cameraController.mouseSensitivity = 10;
             }
@@ -196,8 +195,8 @@ public class WeaponController : MonoBehaviour
         {
             if (isSniper)
             {
-                _scope.SetActive(false);
-                _cross.SetActive(true);
+                _uiController.SetScopeActive(false);
+                _uiController.SetCrosshairActive(true);
                 _cam.cullingMask = -1;
                 _cameraController.mouseSensitivity = 100;
             }

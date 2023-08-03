@@ -6,8 +6,8 @@ public class CameraTransition : MonoBehaviour
     [SerializeField] private Camera _camera;
     [SerializeField] private Transform _targetPosition;
     [SerializeField] private Transform _startCamPosition;
-    [SerializeField] private GameObject _crosshair;
-    [SerializeField] private GameObject _scope;
+
+    [SerializeField] private UIController _uiController;
     private void Start()
     {
         BeginCameraMove();
@@ -24,13 +24,13 @@ public class CameraTransition : MonoBehaviour
         _camera.gameObject.SetActive(false);
         GameManager.Instance.IsGameActive = true;
         GameManager.Instance.HandleStartGame();
-        _crosshair.SetActive(true);
+        _uiController.SetCrosshairActive(true);
     }
     public void EndGameCameraTransition()
     {
         _camera.gameObject.SetActive(true);
-        _scope.SetActive(false);
-        _crosshair.SetActive(false);
+        _uiController.SetScopeActive(false);
+        _uiController.SetCrosshairActive(false);
         GameManager.Instance.IsGameActive = false;
         _camera.transform.DOMove(_startCamPosition.position, 2.0f);
     }
