@@ -9,6 +9,7 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
         public string tag;
         public GameObject prefab;
         public int size;
+        public bool shouldExpand;
         public GameObject parent;
     }
 
@@ -44,32 +45,33 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
             return null;
         }
 
-        GameObject objectToSpawn = poolDictionary[tag].Dequeue();
+        Queue<GameObject> objectsInPool = poolDictionary[tag];
+        GameObject objectToSpawn = null;
+
+        foreach (var obj in objectsInPool)
+        {
+            if (!obj.activeInHierarchy)
+            {
+                objectToSpawn = obj;
+                break;
+            }
+        }
+
+        if (objectToSpawn == null && pools.Find(pool => pool.tag == tag).shouldExpand)
+        {
+            GameObject obj = Instantiate(pools.Find(pool => pool.tag == tag).prefab);
+            obj.transform.parent = pools.Find(pool => pool.tag == tag).parent.transform;
+            obj.SetActive(false);
+            poolDictionary[tag].Enqueue(obj);
+            objectToSpawn = obj;
+        }
 
         objectToSpawn.SetActive(true);
         objectToSpawn.transform.SetPositionAndRotation(position, rotation);
 
-        poolDictionary[tag].Enqueue(objectToSpawn);
-
         return objectToSpawn;
     }
-    public GameObject SpawnFromPool(string tag, Transform transform)
-    {
-        if (!poolDictionary.ContainsKey(tag))
-        {
-            Debug.LogWarning("Pool with tag " + tag + " doesn't exist.");
-            return null;
-        }
-
-        GameObject objectToSpawn = poolDictionary[tag].Dequeue();
-
-        objectToSpawn.SetActive(true);
-        objectToSpawn.transform.SetPositionAndRotation(transform.position, transform.rotation);
-
-        poolDictionary[tag].Enqueue(objectToSpawn);
-
-        return objectToSpawn;
-    }
+ 
 
     public void ReturnToPool(string tag, GameObject objectToReturn)
     {
@@ -83,3 +85,28 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
         poolDictionary[tag].Enqueue(objectToReturn);
     }
 }
+/*
+ *    public GameObject SpawnFromPool(string tag, Transform transform)
+    {
+        if (!poolDictionary.ContainsKey(tag))
+        {
+            Debug.LogWarning("Pool with tag " + tag + " doesn't exist.");
+            return null;
+        }
+        if (poolDictionary[tag].Count == 0 && pools.Find(pool => pool.tag == tag).shouldExpand)
+        {
+            GameObject obj = Instantiate(pools.Find(pool => pool.tag == tag).prefab);
+            obj.transform.parent = pools.Find(pool => pool.tag == tag).parent.transform;
+            obj.SetActive(false);
+            poolDictionary[tag].Enqueue(obj);
+        }
+        GameObject objectToSpawn = poolDictionary[tag].Dequeue();
+
+        objectToSpawn.SetActive(true);
+        objectToSpawn.transform.SetPositionAndRotation(transform.position, transform.rotation);
+
+        poolDictionary[tag].Enqueue(objectToSpawn);
+
+        return objectToSpawn;
+    }
+ */
