@@ -2068,7 +2068,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: TR
+  m_text: EN
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a332b0f4c79cbdd469ee202341a9193e, type: 2}
   m_sharedMaterial: {fileID: 5039777833875561917, guid: a332b0f4c79cbdd469ee202341a9193e, type: 2}
@@ -2407,7 +2407,7 @@ MonoBehaviour:
   - TIME MODE
   - LOADING...
   _turkish:
-  - "BA\u015ELAT"
+  - BASLAT
   - AYARLAR
   - CIKIS
   - "GRAF\u0130K AYARI"
@@ -2415,7 +2415,7 @@ MonoBehaviour:
   - "D\u0130L"
   - KONTROLLER
   - "Mermi Y\xFCkleme"
-  - "Yak\u0131nla\u015Ft\u0131rma"
+  - "Yak\u0131nlast\u0131rma"
   - Silah 1
   - Silah 2
   - Silah 3
@@ -2425,7 +2425,7 @@ MonoBehaviour:
   - CIKIS
   - NORMAL OYUN
   - "ZAMANA KAR\u015EI"
-  - "Y\xDCKLEN\u0130YOR..."
+  - "YUKLEN\u0130YOR..."
   _dropdown: {fileID: 1304591626}
   _enButton: {fileID: 621039692}
   trButton: {fileID: 1666777160}
@@ -3997,7 +3997,7 @@ GameObject:
   - component: {fileID: 621039693}
   - component: {fileID: 621039692}
   m_Layer: 5
-  m_Name: EN
+  m_Name: TR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5843,7 +5843,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5f1da2005d44a514698c11014d522fd1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ce99f85ab39bf894b8533a6452eb1250, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -7045,7 +7045,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ce99f85ab39bf894b8533a6452eb1250, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5f1da2005d44a514698c11014d522fd1, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -9240,7 +9240,7 @@ GameObject:
   - component: {fileID: 1666777161}
   - component: {fileID: 1666777160}
   m_Layer: 5
-  m_Name: TR
+  m_Name: EN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9643,7 +9643,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: EN
+  m_text: TR
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a332b0f4c79cbdd469ee202341a9193e, type: 2}
   m_sharedMaterial: {fileID: 5039777833875561917, guid: a332b0f4c79cbdd469ee202341a9193e, type: 2}

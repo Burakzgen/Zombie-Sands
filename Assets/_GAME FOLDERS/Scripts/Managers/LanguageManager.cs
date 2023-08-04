@@ -32,7 +32,7 @@ public class LanguageManager : MonoBehaviour
         }
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == 0)
         {
-            ChangeLanguageDropdown("DÜÞÜK", "ORTA", "YÜKSEK");
+            ChangeLanguageDropdown("DÜSÜK", "ORTA", "YUKSEK");
 
             _enButton.gameObject.SetActive(true);
             trButton.gameObject.SetActive(false);
