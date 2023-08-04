@@ -27,9 +27,20 @@ public class EnemyHealth : MonoBehaviour
 
     private void Dead(string deadStyle)
     {
+        // Colliderlarýn kapatýlmasý
+        Collider[] colliders = GetComponentsInChildren<Collider>();
+        foreach (var item in colliders)
+        {
+            item.enabled = false;
+        }
+
         GameManager.Instance.UpdateEnemyCount();
+
+        // Animasyon ve effektin oluþmasý
         _enemyAppearance.EnemyAnimator.Play(deadStyle);
         _enemyAppearance.DissolveEffect();
+
+        // Nav mesh sisteminin devre dýþý býrakýlmasý
         _enemyMovement.Agent.enabled = false;
 
         StartCoroutine(HelperMethods.DoAfterDelay(() => gameObject.SetActive(false), 5f));
