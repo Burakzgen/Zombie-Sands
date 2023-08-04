@@ -8,7 +8,8 @@ public class HomeCollisionHandler : MonoBehaviour
         {
             float damage = other.gameObject.GetComponent<EnemyHealth>().Damage;
             GameManager.Instance.TakeDamage(damage);
-            ObjectPoolManager.Instance.ReturnToPool(other.gameObject.tag, other.gameObject);
+            other.gameObject.SetActive(false);
+            //ObjectPoolManager.Instance.ReturnToPool(other.gameObject.tag, other.gameObject);
         }
     }
 }

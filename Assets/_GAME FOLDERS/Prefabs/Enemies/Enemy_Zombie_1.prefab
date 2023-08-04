@@ -3896,15 +3896,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5423296801626352521}
-  m_LocalRotation: {x: -0, y: 0.74530166, z: -0, w: 0.6667274}
-  m_LocalPosition: {x: 26.69, y: 0.197, z: -77.02}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6017637900384616913}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 96.37, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &5423296801633513963
 Animator:
   serializedVersion: 5
@@ -3915,8 +3915,8 @@ Animator:
   m_GameObject: {fileID: 5423296801626352521}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: a1aade9bc7779e24b8219a8ceb948e08, type: 3}
-  m_Controller: {fileID: 9100000, guid: 2f385ed85e85cfe48beec9953e937924, type: 2}
-  m_CullingMode: 1
+  m_Controller: {fileID: 9100000, guid: cf0eac7a56a7476458ed457c129a4e35, type: 2}
+  m_CullingMode: 2
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
@@ -3945,7 +3945,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1.58
-  m_BaseOffset: 0
+  m_BaseOffset: 0.02
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 3
 --- !u!114 &6162498758693773798

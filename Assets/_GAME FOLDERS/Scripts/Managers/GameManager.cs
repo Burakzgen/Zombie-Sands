@@ -32,6 +32,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameObject[] _weaponsObject;
 
     [Header("Enemy Controls")]
+    [SerializeField] private GameObject _basicZombie, _normalZombie, _hardZombie;
     [SerializeField] private Transform[] _enemySpawnPoints;
     [SerializeField] private Transform _targetPoint;
     private int _totalEnemyCount;
@@ -151,18 +152,26 @@ public class GameManager : Singleton<GameManager>
     private void SpawnEnemy()
     {
         int spawnPointIndex = HelperMethods.GetInt(0, _enemySpawnPoints.Length);
-        string chosenZombiePoolName;
+        GameObject chosenZombiePoolObject;
         float randomWeight = HelperMethods.GetFloat(0f, 1f);
 
-        if (randomWeight < 0.5f) // %50 olasýlýk
-            chosenZombiePoolName = "Basic_Zombie";
-        else if (randomWeight < 0.8f) // %30 olasýlýk
-            chosenZombiePoolName = "Normal_Zombie";
-        else // %20 olasýlýk
-            chosenZombiePoolName = "Hard_Zombie";
+        /* if (randomWeight < 0.5f) // %50 olasýlýk
+             chosenZombiePoolName = "Basic_Zombie";
+         else if (randomWeight < 0.8f) // %30 olasýlýk
+             chosenZombiePoolName = "Normal_Zombie";
+         else // %20 olasýlýk
+             chosenZombiePoolName = "Hard_Zombie";
 
-        GameObject chosenZombie = ObjectPoolManager.Instance.SpawnFromPool(chosenZombiePoolName, _enemySpawnPoints[spawnPointIndex].transform.position, Quaternion.identity, _enemySpawnPoints[spawnPointIndex]);
-        chosenZombie.GetComponent<NavMeshAgent>().enabled = true;
+         GameObject chosenZombie = ObjectPoolManager.Instance.SpawnFromPool(chosenZombiePoolName, _enemySpawnPoints[spawnPointIndex].transform.position, Quaternion.identity, _enemySpawnPoints[spawnPointIndex]); */
+
+        if (randomWeight < 0.5f) // %50 olasýlýk
+            chosenZombiePoolObject = _basicZombie;
+        else if (randomWeight < 0.8f) // %30 olasýlýk
+            chosenZombiePoolObject = _normalZombie;
+        else // %20 olasýlýk
+            chosenZombiePoolObject =_hardZombie;
+
+        GameObject chosenZombie = Instantiate(chosenZombiePoolObject, _enemySpawnPoints[spawnPointIndex].transform.position, Quaternion.identity, _enemySpawnPoints[spawnPointIndex]);
         chosenZombie.GetComponent<EnemyMovement>().SetTarget(_targetPoint);
         _totalEnemyCount--;
     }

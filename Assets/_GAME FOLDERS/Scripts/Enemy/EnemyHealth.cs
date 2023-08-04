@@ -32,6 +32,6 @@ public class EnemyHealth : MonoBehaviour
         _enemyAppearance.DissolveEffect();
         _enemyMovement.Agent.enabled = false;
 
-        StartCoroutine(HelperMethods.DoAfterDelay(() => ObjectPoolManager.Instance.ReturnToPool(gameObject.tag, gameObject), 5f));
+        StartCoroutine(HelperMethods.DoAfterDelay(() => gameObject.SetActive(false), 5f));
     }
 }
