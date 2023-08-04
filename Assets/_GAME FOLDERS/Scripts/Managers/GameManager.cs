@@ -37,7 +37,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private Transform _targetPoint;
     private int _totalEnemyCount;
     private int _targetEnemyCount;
-
+    private int _currentWave;
 
     [Header("GameMode Controls")]
     [SerializeField] private TextMeshProUGUI _timerText;
@@ -143,9 +143,21 @@ public class GameManager : Singleton<GameManager>
     }
     IEnumerator SpawnEnemyCoroutine()
     {
+        float difficultyIncreaseTimer = 0f;
+        float difficultyIncreaseThreshold = 20f;
+
         while (IsGameActive && _totalEnemyCount > 0)
         {
+
             yield return new WaitForSeconds(_spawnDuration);
+            difficultyIncreaseTimer += _spawnDuration;
+
+            if (difficultyIncreaseTimer >= difficultyIncreaseThreshold)
+            {
+                _currentWave += 5;
+                difficultyIncreaseTimer = 0f;
+            }
+
             SpawnEnemy();
         }
     }
@@ -169,11 +181,23 @@ public class GameManager : Singleton<GameManager>
         else if (randomWeight < 0.8f) // %30 olasýlýk
             chosenZombiePoolObject = _normalZombie;
         else // %20 olasýlýk
-            chosenZombiePoolObject =_hardZombie;
+            chosenZombiePoolObject = _hardZombie;
 
         GameObject chosenZombie = Instantiate(chosenZombiePoolObject, _enemySpawnPoints[spawnPointIndex].transform.position, Quaternion.identity, _enemySpawnPoints[spawnPointIndex]);
+        IncreaseEnemyStats(chosenZombie);
         chosenZombie.GetComponent<EnemyMovement>().SetTarget(_targetPoint);
         _totalEnemyCount--;
+    }
+    private void IncreaseEnemyStats(GameObject enemy)
+    {
+        // Mevcut dalgaya göre caný ve hýzýnýn artýrýlmasý
+        EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
+        enemyHealth.Health += _currentWave * 5;
+        NavMeshAgent navMeshAgent = enemy.GetComponent<NavMeshAgent>();
+        navMeshAgent.speed += _currentWave * 0.075f;
+
+        Animator animator = enemy.GetComponent<Animator>();
+        animator.speed = navMeshAgent.speed;
     }
     public void UpdateEnemyCount()
     {

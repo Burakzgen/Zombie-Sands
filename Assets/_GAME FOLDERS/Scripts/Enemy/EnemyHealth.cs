@@ -6,7 +6,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private float _damage;
     private EnemyAppearance _enemyAppearance;
     private EnemyMovement _enemyMovement;
-
+    public float Health { get { return _health; } set { _health = value; } }
     public float Damage { get { return _damage; } }
     private void Start()
     {

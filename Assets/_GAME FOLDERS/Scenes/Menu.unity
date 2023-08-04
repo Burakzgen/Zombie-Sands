@@ -2409,7 +2409,7 @@ MonoBehaviour:
   _turkish:
   - "BA\u015ELAT"
   - AYARLAR
-  - "\xC7IKI\u015E"
+  - CIKIS
   - "GRAF\u0130K AYARI"
   - GENEL SES
   - "D\u0130L"
@@ -2421,8 +2421,8 @@ MonoBehaviour:
   - Silah 3
   - Duraklatma
   - Kamera
-  - "\xC7IKI\u015E"
-  - "\xC7IKI\u015E"
+  - CIKIS
+  - CIKIS
   - NORMAL OYUN
   - "ZAMANA KAR\u015EI"
   - "Y\xDCKLEN\u0130YOR..."
