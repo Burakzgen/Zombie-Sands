@@ -181,6 +181,7 @@ public class GameManager : Singleton<GameManager>
         if (CurrentEnemyCount >= _targetEnemyCount)
         {
             // 1 Saniye Delay
+            _currentEnemyText.text = CurrentEnemyCount.ToString();
             StartCoroutine(HelperMethods.DoAfterDelay(() => { GameWin(); }, 1f));
         }
         else
