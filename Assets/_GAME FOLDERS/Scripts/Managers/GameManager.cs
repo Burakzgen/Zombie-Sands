@@ -183,6 +183,7 @@ public class GameManager : Singleton<GameManager>
         else // %20 olasýlýk
             chosenZombiePoolObject = _hardZombie;
 
+        // Duruma gore warp yapýlabilir. 
         GameObject chosenZombie = Instantiate(chosenZombiePoolObject, _enemySpawnPoints[spawnPointIndex].transform.position, Quaternion.identity, _enemySpawnPoints[spawnPointIndex]);
         IncreaseEnemyStats(chosenZombie);
         chosenZombie.GetComponent<EnemyMovement>().SetTarget(_targetPoint);
