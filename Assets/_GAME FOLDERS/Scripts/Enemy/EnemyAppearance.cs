@@ -4,7 +4,7 @@ using UnityEngine;
 public class EnemyAppearance : MonoBehaviour
 {
     Animator _myAnimator;
-    [SerializeField] private string[] _randomWalkAnimation;
+    private string[] _randomWalkAnimation = new string[4] { "Normal_Walk", "Dumb_Walk_1", "Dumb_Walk_2", "Dumb_Walk_3" };
 
     [Header("HEAD & BODY CONTROLS")]
     [SerializeField] private GameObject[] _heads;
@@ -36,7 +36,8 @@ public class EnemyAppearance : MonoBehaviour
         _dissolveHeadMaterial = _heads[_randomHeadNumber].GetComponent<MeshRenderer>().material;
         _dissolveBodyMaterial = _bodies[_randomBodyNumber].GetComponent<SkinnedMeshRenderer>().material;
     }
-    // Animator uzerinden caigiriliacak
+
+    // Animator uzerinden caigiriliacak (Rastgele animasyonlar gelinsin istenirse bunu aktif edebilriiz )
     public void SetRandomWalkAnimation()
     {
         int index = Random.Range(0, _randomWalkAnimation.Length);
