@@ -120,11 +120,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2dca3853ba12274c9951cc4154cb8e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _randomWalkAnimation:
-  - Normal_Walk
-  - Dumb_Walk_1
-  - Dumb_Walk_2
-  - Dumb_Walk_3
   _heads:
   - {fileID: 6121257698509551167}
   - {fileID: 6121257698509550937}

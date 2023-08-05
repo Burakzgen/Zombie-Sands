@@ -24,10 +24,10 @@ public class WeaponController : MonoBehaviour
     private float _fireFreq;
     [SerializeField] private bool _isBulletCassing;             // Mermi kovaný olsun mu?
     [SerializeField] private Transform _bulletExitPointCassing; // Mermi kovaný çýkýþ poziyonu.
-    //[SerializeField] private GameObject _bulletCassingObejct;   // Mermi kovaný
 
     [Header("ZOOM SETTINGS")]
-    private bool _isZoom;
+    private bool _isAiming;
+
     [SerializeField] private bool isSniper;
     [SerializeField] private UIController _uiController;
     float _camFieldPov;
@@ -77,19 +77,19 @@ public class WeaponController : MonoBehaviour
         // Zoom
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            _isZoom = true;
+            _isAiming = true;
 
             CameraZoom(true);
 
         }
         if (Input.GetKeyUp(KeyCode.Mouse1))
         {
-            _isZoom = false;
+            _isAiming = false;
 
             CameraZoom(false);
         }
 
-        if (_isZoom)
+        if (_isAiming)
         {
             if (Input.GetKey(KeyCode.Mouse0))
             {
@@ -132,13 +132,13 @@ public class WeaponController : MonoBehaviour
             hit.transform.GetComponentInParent<EnemyHealth>().TakeDamage(damage);
             ObjectPoolManager.Instance.SpawnFromPool("BloodEffect", hit.point, Quaternion.LookRotation(hit.normal));
         }
-        else if (hit.transform.CompareTag("OverEnemy")) // Duruma gore ilave yapilabilir
+        /* // Duruma gore ilave edilebilir.(Karakteri geri itme ya da nesneleri geri itme gibi)
+        else if (hit.transform.CompareTag("Force"))
         {
-            hit.transform.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
             Rigidbody rg = hit.transform.gameObject.GetComponent<Rigidbody>();
             rg.AddForce(-hit.normal * 50f);
-            ObjectPoolManager.Instance.SpawnFromPool("BloodEffect", hit.point, Quaternion.LookRotation(hit.normal));
         }
+        */
         else
         {
             GameObject bulletImpact = ObjectPoolManager.Instance.SpawnFromPool("BulletImpactEffect", hit.point, Quaternion.LookRotation(hit.normal));
@@ -157,11 +157,11 @@ public class WeaponController : MonoBehaviour
         {
             GameObject casing = ObjectPoolManager.Instance.SpawnFromPool("Casing", _bulletExitPointCassing.transform.position, _bulletExitPointCassing.transform.rotation);
             Rigidbody rigidbody = casing.GetComponent<Rigidbody>();
-            rigidbody.AddRelativeForce(new Vector3(-10, 1, 0) * 125);
+            rigidbody.AddRelativeForce(new Vector3(-10, 1, 0) * 50);
 
         }
 
-       ObjectPoolManager.Instance.SpawnFromPool("Bullet", _bulletExitPoint.transform.position, _bulletExitPoint.transform.rotation);
+        ObjectPoolManager.Instance.SpawnFromPool("Bullet", _bulletExitPoint.transform.position, _bulletExitPoint.transform.rotation);
 
         if (isCameraShake)
         {

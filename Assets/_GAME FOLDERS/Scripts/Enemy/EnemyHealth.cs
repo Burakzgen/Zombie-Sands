@@ -16,6 +16,7 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(float damage)
     {
         _health -= damage;
+        _enemyAppearance.EnemyAnimator.Play("Damage");
         if (_health <= 0)
         {
             if (damage >= 100)
