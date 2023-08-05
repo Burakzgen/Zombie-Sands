@@ -4,7 +4,7 @@ using UnityEngine;
 public class EnemyAppearance : MonoBehaviour
 {
     Animator _myAnimator;
-    private string[] _randomWalkAnimation = new string[4] { "Normal_Walk", "Dumb_Walk_1", "Dumb_Walk_2", "Dumb_Walk_3" };
+    private string[] _randomWalkAnimation = new string[4] { "Normal_Walk", "Dumb_Walk_1", "Dumb_Walk_2", "Dumb_Walk_3" }; // Duruma gore cesitlilik olabilir.
 
     [Header("HEAD & BODY CONTROLS")]
     [SerializeField] private GameObject[] _heads;

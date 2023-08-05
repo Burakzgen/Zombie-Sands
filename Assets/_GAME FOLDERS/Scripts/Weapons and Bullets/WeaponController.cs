@@ -157,7 +157,7 @@ public class WeaponController : MonoBehaviour
         {
             GameObject casing = ObjectPoolManager.Instance.SpawnFromPool("Casing", _bulletExitPointCassing.transform.position, _bulletExitPointCassing.transform.rotation);
             Rigidbody rigidbody = casing.GetComponent<Rigidbody>();
-            rigidbody.AddRelativeForce(new Vector3(-10, 1, 0) * 50);
+            rigidbody.AddRelativeForce(new Vector3(-5f,4f, 5f) * 25);
 
         }
 

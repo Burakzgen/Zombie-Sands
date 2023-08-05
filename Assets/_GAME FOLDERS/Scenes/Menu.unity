@@ -3186,7 +3186,7 @@ GameObject:
   m_Component:
   - component: {fileID: 411397618}
   m_Layer: 0
-  m_Name: --->MANAGERS
+  m_Name: -->MANAGERS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10870,7 +10870,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2022341450}
   m_Layer: 0
-  m_Name: --->CANVAS SETTINGS
+  m_Name: -->CANVAS SETTINGS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

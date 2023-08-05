@@ -30,6 +30,7 @@ public class GameManager : Singleton<GameManager>
 
     [Header("Weapon Controls")]
     [SerializeField] private GameObject[] _weaponsObject;
+    [SerializeField] private AudioSource _weaponChanger;
 
     [Header("Enemy Controls")]
     [SerializeField] private GameObject _basicZombie, _normalZombie, _hardZombie;
@@ -278,7 +279,8 @@ public class GameManager : Singleton<GameManager>
     {
         if (weaponIndex == _currentWeaponIndex)
             return;
-        // TODO: Degisim sesi gelebilir.
+
+        _weaponChanger.Play();
         _weaponsObject[_currentWeaponIndex].SetActive(false);
         _weaponsObject[weaponIndex].SetActive(true);
         _currentWeaponIndex = weaponIndex;
