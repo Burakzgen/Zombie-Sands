@@ -10,6 +10,9 @@ public class CameraTransition : MonoBehaviour
     [SerializeField] private UIController _uiController;
     private void Start()
     {
+        if (Time.timeScale != 1)
+            Time.timeScale = 1;
+
         BeginCameraMove();
     }
     private void BeginCameraMove()
