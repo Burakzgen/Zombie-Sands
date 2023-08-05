@@ -149,7 +149,6 @@ public class GameManager : Singleton<GameManager>
         while (IsGameActive && _totalEnemyCount > 0)
         {
 
-            yield return new WaitForSeconds(_spawnDuration);
             difficultyIncreaseTimer += _spawnDuration;
 
             if (difficultyIncreaseTimer >= difficultyIncreaseThreshold)
@@ -159,6 +158,7 @@ public class GameManager : Singleton<GameManager>
             }
 
             SpawnEnemy();
+            yield return new WaitForSeconds(_spawnDuration);
         }
     }
     private void SpawnEnemy()

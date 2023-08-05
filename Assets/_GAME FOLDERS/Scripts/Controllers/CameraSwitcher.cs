@@ -12,7 +12,7 @@ public class CameraSwitcher : MonoBehaviour
         if (!GameManager.Instance.IsGameActive)
             return;
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) && !_uiController._scope.activeSelf)
         {
             SwitchCamera();
         }
